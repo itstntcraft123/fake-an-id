@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bmdsk1kuk34xi"]
+
+[ext_resource type="Script" uid="uid://dco1cagudndq3" path="res://scripts/select_menu.gd" id="1_jsvjb"]
+
+[node name="SelectMenu" type="VBoxContainer" unique_id=1729985181]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jsvjb")
