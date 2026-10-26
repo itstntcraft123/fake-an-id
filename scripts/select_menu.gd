@@ -100,6 +100,9 @@ func update_label():
 			var label = child.get_child(0)
 			if label is RichTextLabel:
 				if child == get_viewport().gui_get_focus_owner():
-					label.add_theme_color_override("default_color", child.get_theme_color("font_focus_color"))
+					if child.is_pressed():
+						label.add_theme_color_override("default_color", child.get_theme_color("font_pressed_color"))
+					else:
+						label.add_theme_color_override("default_color", child.get_theme_color("font_focus_color"))
 				else:
 					label.add_theme_color_override("default_color", child.get_theme_color("font_color"))
