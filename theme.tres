@@ -71,3 +71,4 @@ Button/styles/normal = SubResource("StyleBoxFlat_ttqs8")
 Button/styles/pressed = SubResource("StyleBoxFlat_wdt2l")
 Label/font_sizes/font_size = 72
 Label/fonts/font = ExtResource("1_e1x85")
+VBoxContainer/constants/separation = 10

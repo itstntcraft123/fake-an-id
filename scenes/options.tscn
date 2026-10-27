@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://mbv80ufx3lia"]
+
+[ext_resource type="Theme" uid="uid://ckm8ormicu8rl" path="res://theme.tres" id="1_yjkok"]
+[ext_resource type="PackedScene" uid="uid://bmdsk1kuk34xi" path="res://scenes/select_menu.tscn" id="2_2iy26"]
+[ext_resource type="Script" uid="uid://cir1t7mmehfta" path="res://scripts/options.gd" id="2_kv8mn"]
+
+[node name="Options" type="Control" unique_id=212269269]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yjkok")
+script = ExtResource("2_kv8mn")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=556681955]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=56445023]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Options" type="Label" parent="MarginContainer/VBoxContainer" unique_id=582477776]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "Options"
+horizontal_alignment = 1
+
+[node name="SelectMenu" parent="MarginContainer/VBoxContainer" unique_id=1729985181 instance=ExtResource("2_2iy26")]
+layout_mode = 2
+
+[node name="Sounds" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=635173152]
+layout_mode = 2
+text = "music & sounds"
+
+[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=792660052]
+layout_mode = 2
+text = "controls"
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=273113489]
+layout_mode = 2
+text = "credits"
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=300295775]
+layout_mode = 2
+text = "back to menu"
+
+[connection signal="selected" from="MarginContainer/VBoxContainer/SelectMenu" to="." method="_on_select_menu_selected"]
