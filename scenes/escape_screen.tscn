@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://pcbnymjs5gst"]
+
+[ext_resource type="Theme" uid="uid://ckm8ormicu8rl" path="res://theme.tres" id="1_sgwcy"]
+[ext_resource type="PackedScene" uid="uid://bmdsk1kuk34xi" path="res://scenes/select_menu.tscn" id="2_gjwmd"]
+[ext_resource type="Script" uid="uid://blfn6jja01qe8" path="res://scripts/escape_screen.gd" id="2_k22dc"]
+[ext_resource type="PackedScene" uid="uid://mbv80ufx3lia" path="res://scenes/options.tscn" id="3_k22dc"]
+
+[node name="EscapeScreen" type="Control" unique_id=1642114743]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sgwcy")
+script = ExtResource("2_k22dc")
+options = ExtResource("3_k22dc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=8049346]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7058824)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=172204212]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1773209103]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="GameMenu" type="Label" parent="MarginContainer/VBoxContainer" unique_id=465503857]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "Game Menu"
+horizontal_alignment = 1
+
+[node name="SelectMenu" parent="MarginContainer/VBoxContainer" unique_id=1729985181 instance=ExtResource("2_gjwmd")]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=1995098880]
+layout_mode = 2
+text = "back to game"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=2114105348]
+layout_mode = 2
+text = "options"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=1281337285]
+layout_mode = 2
+text = "quit to menu"
+
+[connection signal="selected" from="MarginContainer/VBoxContainer/SelectMenu" to="." method="_on_select_menu_selected"]

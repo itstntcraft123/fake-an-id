@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 func _on_select_menu_selected(index: int, item: Control) -> void:
 	match item.name:
 		"Start":
-			get_tree().change_scene_to_file("res://scenes/node_2d.tscn")
+			get_tree().change_scene_to_file("res://scenes/game.tscn")
 		"Options":
 			get_tree().change_scene_to_file("res://scenes/options.tscn")
 		"Quit":
