@@ -54,9 +54,6 @@ func get_hovered_child() -> Control:
 	return null
 
 func _process(delta: float) -> void:
-	var children = get_children()
-	if get_viewport().gui_get_focus_owner() not in children:
-		focus_children(children)
 	var hovered = get_hovered_child()
 	if hovered and hovered != prev_hovered:
 		reset_arrow()
