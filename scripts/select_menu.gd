@@ -18,13 +18,7 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	var children = get_children()
-	var count = 0
-	var focused = false
-	while count < children.size() and focused == false:
-		if children[count] is Button:
-			children[count].grab_focus()
-			focused = true
-		count += 1
+	focus_children(children)
 	for i in range(children.size()):
 		var child = children[i]
 		if child is Button:
@@ -60,6 +54,9 @@ func get_hovered_child() -> Control:
 	return null
 
 func _process(delta: float) -> void:
+	var children = get_children()
+	if get_viewport().gui_get_focus_owner() not in children:
+		focus_children(children)
 	var hovered = get_hovered_child()
 	if hovered and hovered != prev_hovered:
 		reset_arrow()
@@ -78,6 +75,15 @@ func _on_timer_timeout() -> void:
 			if label is RichTextLabel:
 				set_arrow(label, child == get_viewport().gui_get_focus_owner() and arrow_shown)
 	arrow_shown = !arrow_shown
+
+func focus_children(children) -> void:
+	var focused = false
+	var count = 0
+	while count < children.size() and focused == false:
+		if children[count] is Button:
+			children[count].grab_focus()
+			focused = true
+		count += 1
 
 func set_arrow(label: RichTextLabel, on: bool) -> void:
 	var orig_text = label.get_meta("orig_text")
