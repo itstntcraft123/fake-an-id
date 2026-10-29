@@ -3,7 +3,7 @@ extends Node2D
 @export var escape_screen: PackedScene
 
 func _ready() -> void:
-	pass
+	$UI/Control/DoBLabel/DoB.text = Utils.random_dob()
 
 func _process(delta: float) -> void:
 	pass

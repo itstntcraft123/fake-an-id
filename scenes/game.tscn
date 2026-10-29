@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://pcbnymjs5gst" path="res://scenes/escape_screen.tscn" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://py73ljae74sf" path="res://sprites/id-placeholder.png" id="3_lnu2h"]
 [ext_resource type="Theme" uid="uid://ckm8ormicu8rl" path="res://theme.tres" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://1t2iqav31vyb" path="res://sprites/facePlaceholder.png" id="5_iywne"]
 
 [node name="Game" type="Node2D" unique_id=478941946]
 script = ExtResource("1_uwrxv")
@@ -11,20 +12,116 @@ escape_screen = ExtResource("2_yqjtg")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1346658912]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=418763772]
+[node name="Control" type="Control" parent="UI" unique_id=2111988098]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("4_lbhrr")
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control" unique_id=418763772]
 texture_filter = 1
+layout_mode = 0
 offset_left = 117.0
 offset_top = 4.0
 offset_right = 1838.6
 offset_bottom = 1080.0
 texture = ExtResource("3_lnu2h")
 
-[node name="Label" type="Label" parent="." unique_id=1600423695]
-offset_left = 762.0
-offset_top = 354.0
-offset_right = 953.0
-offset_bottom = 497.0
-theme = ExtResource("4_lbhrr")
+[node name="IDImage" type="TextureRect" parent="UI/Control" unique_id=530004295]
+texture_filter = 1
+layout_mode = 0
+offset_left = 335.0
+offset_top = 391.0
+offset_right = 625.0
+offset_bottom = 720.0
+texture = ExtResource("5_iywne")
+
+[node name="FirstNameLabel" type="Label" parent="UI/Control" unique_id=1600423695]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 358.0
+offset_right = 979.0
+offset_bottom = 411.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
-text = "Name:"
+theme_override_font_sizes/font_size = 40
+text = "FIRST NAME"
+
+[node name="FirstName" type="Label" parent="UI/Control/FirstNameLabel" unique_id=1994380922]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 44.0
+offset_right = 804.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "[FN]"
+
+[node name="LastNameLabel" type="Label" parent="UI/Control" unique_id=764388481]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 461.0
+offset_right = 1092.0
+offset_bottom = 514.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "LAST NAME"
+
+[node name="LastNAME" type="Label" parent="UI/Control/LastNameLabel" unique_id=2000823908]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 41.0
+offset_right = 801.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "[LN]"
+
+[node name="DoBLabel" type="Label" parent="UI/Control" unique_id=319141769]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 570.0
+offset_right = 1188.0
+offset_bottom = 623.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "DATE OF BIRTH"
+
+[node name="DoB" type="Label" parent="UI/Control/DoBLabel" unique_id=2052988321]
+layout_mode = 0
+offset_left = 329.0
+offset_top = -3.0
+offset_right = 824.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "[DoB]"
+
+[node name="ExpireDateLabel" type="Label" parent="UI/Control" unique_id=1213400034]
+layout_mode = 0
+offset_left = 754.0
+offset_top = 626.0
+offset_right = 875.0
+offset_bottom = 696.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "EXP"
+
+[node name="EXPDate" type="Label" parent="UI/Control/ExpireDateLabel" unique_id=643385181]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 308.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "[expDate]"
+
+[node name="Image2" type="TextureRect" parent="UI/Control" unique_id=1414128172]
+self_modulate = Color(1, 1, 1, 0.5372549)
+texture_filter = 1
+layout_mode = 0
+offset_left = 1145.0
+offset_top = 743.0
+offset_right = 1308.0
+offset_bottom = 904.0
+texture = ExtResource("5_iywne")
