@@ -31,9 +31,9 @@ texture = ExtResource("3_lnu2h")
 [node name="IDImage" type="TextureRect" parent="UI/Control" unique_id=530004295]
 texture_filter = 1
 layout_mode = 0
-offset_left = 332.0
+offset_left = 336.0
 offset_top = 392.0
-offset_right = 625.0
+offset_right = 627.0
 offset_bottom = 721.0
 texture = ExtResource("5_iywne")
 
@@ -129,9 +129,9 @@ texture = ExtResource("5_iywne")
 
 [node name="SexLabel" type="Label" parent="UI/Control" unique_id=1940188850]
 layout_mode = 0
-offset_left = 1012.0
+offset_left = 1009.0
 offset_top = 853.0
-offset_right = 1089.0
+offset_right = 1086.0
 offset_bottom = 893.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
@@ -149,9 +149,9 @@ text = "[sex]"
 
 [node name="HeightLabel" type="Label" parent="UI/Control" unique_id=23549392]
 layout_mode = 0
-offset_left = 1013.0
+offset_left = 1009.0
 offset_top = 885.0
-offset_right = 1090.0
+offset_right = 1086.0
 offset_bottom = 925.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
@@ -169,9 +169,9 @@ text = "[hgt]"
 
 [node name="HairLabel" type="Label" parent="UI/Control" unique_id=616471486]
 layout_mode = 0
-offset_left = 1152.0
+offset_left = 1151.0
 offset_top = 851.0
-offset_right = 1229.0
+offset_right = 1228.0
 offset_bottom = 891.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
@@ -189,9 +189,9 @@ text = "[hairc]"
 
 [node name="WeightLabel" type="Label" parent="UI/Control" unique_id=1668930202]
 layout_mode = 0
-offset_left = 1153.0
+offset_left = 1151.0
 offset_top = 887.0
-offset_right = 1230.0
+offset_right = 1228.0
 offset_bottom = 927.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
