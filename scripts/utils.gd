@@ -1,4 +1,9 @@
 extends Node
+# Unless cited in the function, the random_ functions do not reflect real data (or do so inaccurately).
+var rng = RandomNumberGenerator.new()
+
+func _ready() -> void:
+	randomize()
 
 func random_name() -> String:
 	var data = read_data("names.json")
@@ -24,8 +29,83 @@ func random_dob() -> String:
 	var random_date = Time.get_datetime_dict_from_unix_time(randi_range(int(min_date), int(max_date)))
 	return str(random_date["year"]) + "/" + str(random_date["month"]) + "/" + str(random_date["day"])
 
-func random(array: Array) -> String:
+func random_class() -> String:
+	return weighted_random({
+		"D": 0.7,
+		"C": 0.15,
+		"B": 0.075,
+		"A": 0.075
+	})
+
+func random_gender() -> String:
+	return weighted_random({
+		"M": 0.48,
+		"F": 0.47,
+		"X": 0.05
+	})
+
+func random_height() -> String:
+	var height = weighted_random_num(58, 96, 67, 3)
+	return str(floori(height / 12)) + "'-" + str(int(height) % 12) + "\""
+
+func random_weight() -> String:
+	return str(int(weighted_random_num(100, 300, 185, 30))) + " lb"
+
+func random_hair_color() -> String:
+	return weighted_random({
+		"BRO": 0.5,
+		"BLN": 0.30,
+		"BLK": 0.15,
+		"RED": 0.05
+	})
+
+func random_eye_color() -> String:
+	# data from pmc.ncbi.nlm.nih.gov/articles/PMC12478955
+	return weighted_random({
+		"BRO": 0.53,
+		"BLU": 0.237,
+		"HAZ": 0.103,
+		"GRN": 0.09,
+		"GRY": 0.007,
+		"UNK": 0.033
+	})
+
+func random(array: Array) -> Variant:
 	return array[randi_range(0, array.size())]
+
+func weighted_random_num(minimum: float, maximum: float, mean: float, deviation: float) -> float:
+	return clampf(rng.randfn(mean, deviation), minimum, maximum)
+
+func test_weighted_random_num_func(function: Callable, tests: int, round_by: int = -1) -> Dictionary:
+	var results = {}
+	for i in range(tests):
+		var rand = function.call() if round_by == -1 else snapped(function.call(), round_by)
+		results[rand] = results.get(rand, 0) + 1
+	return results
+
+func test_weighted_random_num(minimum: float, maximum: float, mean: float, deviation: float, tests: int, round_by: int) -> Dictionary:
+	return test_weighted_random_num_func(func(): return weighted_random_num(minimum, maximum, mean, deviation), tests, round_by)
+
+func weighted_random(dict: Dictionary) -> Variant:
+	var rand = randf()
+	var current = 0
+	for element in dict:
+		current += dict[element]
+		if current > rand:
+			return element
+	return null
+
+func test_weighted_random_func(function: Callable, tests: int) -> Dictionary:
+	var results = {}
+	for i in range(tests):
+		var rand = function.call()
+		results[rand] = results.get(rand, 0) + 1
+	for key in results:
+		results[key] /= float(tests)
+	return results
+
+func test_weighted_random(dict: Dictionary, tests: int) -> Dictionary:
+	return test_weighted_random_func(func(): return weighted_random(dict), tests)
 
 func read_data(filename: String) -> Variant:
 	var file = FileAccess.open("res://data/" + filename, FileAccess.READ)
