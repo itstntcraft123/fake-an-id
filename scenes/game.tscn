@@ -31,28 +31,28 @@ texture = ExtResource("3_lnu2h")
 [node name="IDImage" type="TextureRect" parent="UI/Control" unique_id=530004295]
 texture_filter = 1
 layout_mode = 0
-offset_left = 335.0
-offset_top = 391.0
+offset_left = 332.0
+offset_top = 392.0
 offset_right = 625.0
-offset_bottom = 720.0
+offset_bottom = 721.0
 texture = ExtResource("5_iywne")
 
 [node name="FirstNameLabel" type="Label" parent="UI/Control" unique_id=1600423695]
 layout_mode = 0
 offset_left = 751.0
-offset_top = 358.0
+offset_top = 357.0
 offset_right = 979.0
-offset_bottom = 411.0
+offset_bottom = 410.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "FIRST NAME"
 
 [node name="FirstName" type="Label" parent="UI/Control/FirstNameLabel" unique_id=1994380922]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 44.0
-offset_right = 804.0
-offset_bottom = 123.0
+offset_left = -3.0
+offset_top = 42.0
+offset_right = 800.0
+offset_bottom = 121.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "[FN]"
@@ -60,9 +60,9 @@ text = "[FN]"
 [node name="LastNameLabel" type="Label" parent="UI/Control" unique_id=764388481]
 layout_mode = 0
 offset_left = 750.0
-offset_top = 461.0
+offset_top = 462.0
 offset_right = 1092.0
-offset_bottom = 514.0
+offset_bottom = 515.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "LAST NAME"
@@ -70,9 +70,9 @@ text = "LAST NAME"
 [node name="LastNAME" type="Label" parent="UI/Control/LastNameLabel" unique_id=2000823908]
 layout_mode = 0
 offset_left = -2.0
-offset_top = 41.0
+offset_top = 40.0
 offset_right = 801.0
-offset_bottom = 120.0
+offset_bottom = 119.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "[LN]"
@@ -80,48 +80,149 @@ text = "[LN]"
 [node name="DoBLabel" type="Label" parent="UI/Control" unique_id=319141769]
 layout_mode = 0
 offset_left = 752.0
-offset_top = 570.0
+offset_top = 572.0
 offset_right = 1188.0
-offset_bottom = 623.0
+offset_bottom = 625.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 44
+theme_override_font_sizes/font_size = 40
 text = "DATE OF BIRTH"
 
 [node name="DoB" type="Label" parent="UI/Control/DoBLabel" unique_id=2052988321]
 layout_mode = 0
-offset_left = 329.0
-offset_top = -3.0
-offset_right = 824.0
-offset_bottom = 76.0
+offset_left = 300.0
+offset_top = -14.0
+offset_right = 795.0
+offset_bottom = 65.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 50
 text = "[DoB]"
 
 [node name="ExpireDateLabel" type="Label" parent="UI/Control" unique_id=1213400034]
 layout_mode = 0
 offset_left = 754.0
-offset_top = 626.0
+offset_top = 628.0
 offset_right = 875.0
-offset_bottom = 696.0
+offset_bottom = 698.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 40
 text = "EXP"
 
 [node name="EXPDate" type="Label" parent="UI/Control/ExpireDateLabel" unique_id=643385181]
 layout_mode = 0
-offset_left = 90.0
-offset_right = 308.0
-offset_bottom = 79.0
+offset_left = 88.0
+offset_top = -15.0
+offset_right = 310.0
+offset_bottom = 64.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 50
 text = "[expDate]"
 
 [node name="Image2" type="TextureRect" parent="UI/Control" unique_id=1414128172]
 self_modulate = Color(1, 1, 1, 0.5372549)
 texture_filter = 1
 layout_mode = 0
-offset_left = 1145.0
-offset_top = 743.0
-offset_right = 1308.0
-offset_bottom = 904.0
+offset_left = 1165.0
+offset_top = 706.0
+offset_right = 1328.0
+offset_bottom = 881.0
 texture = ExtResource("5_iywne")
+
+[node name="SexLabel" type="Label" parent="UI/Control" unique_id=1940188850]
+layout_mode = 0
+offset_left = 1012.0
+offset_top = 853.0
+offset_right = 1089.0
+offset_bottom = 893.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "SEX"
+
+[node name="Sex" type="Label" parent="UI/Control/SexLabel" unique_id=1747402248]
+layout_mode = 0
+offset_left = 65.0
+offset_top = -1.0
+offset_right = 131.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "[sex]"
+
+[node name="HeightLabel" type="Label" parent="UI/Control" unique_id=23549392]
+layout_mode = 0
+offset_left = 1013.0
+offset_top = 885.0
+offset_right = 1090.0
+offset_bottom = 925.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "HGT"
+
+[node name="Sex" type="Label" parent="UI/Control/HeightLabel" unique_id=968089444]
+layout_mode = 0
+offset_left = 65.0
+offset_top = -1.0
+offset_right = 131.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "[hgt]"
+
+[node name="HairLabel" type="Label" parent="UI/Control" unique_id=616471486]
+layout_mode = 0
+offset_left = 1152.0
+offset_top = 851.0
+offset_right = 1229.0
+offset_bottom = 891.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "HAIR"
+
+[node name="HairColor" type="Label" parent="UI/Control/HairLabel" unique_id=447074001]
+layout_mode = 0
+offset_left = 72.0
+offset_top = -1.0
+offset_right = 167.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "[hairc]"
+
+[node name="WeightLabel" type="Label" parent="UI/Control" unique_id=1668930202]
+layout_mode = 0
+offset_left = 1153.0
+offset_top = 887.0
+offset_right = 1230.0
+offset_bottom = 927.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "WGT"
+
+[node name="Weight" type="Label" parent="UI/Control/WeightLabel" unique_id=1700281475]
+layout_mode = 0
+offset_left = 71.0
+offset_top = -1.0
+offset_right = 166.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "[weight]"
+
+[node name="EyeLabel" type="Label" parent="UI/Control" unique_id=659478503]
+layout_mode = 0
+offset_left = 1334.0
+offset_top = 852.0
+offset_right = 1411.0
+offset_bottom = 892.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "EYE"
+
+[node name="EyeColor" type="Label" parent="UI/Control/EyeLabel" unique_id=691298928]
+layout_mode = 0
+offset_left = 57.0
+offset_top = -2.0
+offset_right = 152.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "[eyec]"

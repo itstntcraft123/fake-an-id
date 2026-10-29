@@ -50,6 +50,6 @@ text = "credits"
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=300295775]
 layout_mode = 2
-text = "back to menu"
+text = "back"
 
 [connection signal="selected" from="MarginContainer/VBoxContainer/SelectMenu" to="." method="_on_select_menu_selected"]
