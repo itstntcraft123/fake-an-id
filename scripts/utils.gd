@@ -5,12 +5,21 @@ var rng = RandomNumberGenerator.new()
 func _ready() -> void:
 	randomize()
 
-func random_name() -> String:
+
+
+func random_first_name(gender: String) -> String:
 	var data = read_data("names.json")
 	
-	var first: Array = data["first_names"]
-	var last: Array = data["last_names"]
-	return random(first) + random(last)
+	var male: Array = data["male_first_names"]
+	var female: Array = data["female_first_names"]
+	
+	match gender: 
+		"M":
+			return random(male)
+		"F":
+			return random(female)
+		_: 
+			return random(male + female)
 
 func random_address() -> String:
 	var data = read_data("addresses.json")

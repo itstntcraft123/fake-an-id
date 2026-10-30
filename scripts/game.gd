@@ -3,12 +3,16 @@ extends Node2D
 @export var escape_screen: PackedScene
 
 func _ready() -> void:
+	var gender := Utils.random_gender()
+	
 	$UI/Control/DriversClassLabel/DriversClass.text = Utils.random_class()
+	
+	$UI/Control/FirstNameLabel/FirstName.text = Utils.random_first_name(gender)
 	
 	$UI/Control/DoBLabel/DoB.text = Utils.random_dob()
 	# $UI/Control/ExpireDateLabel/EXPDate.text = Utils.random_expDate()
 	
-	$UI/Control/SexLabel/Sex.text = Utils.random_gender()
+	$UI/Control/SexLabel/Sex.text = gender
 	$UI/Control/HeightLabel/Height.text = Utils.random_height()
 	$UI/Control/HairLabel/HairColor.text = Utils.random_hair_color()
 	$UI/Control/WeightLabel/Weight.text = Utils.random_weight()
