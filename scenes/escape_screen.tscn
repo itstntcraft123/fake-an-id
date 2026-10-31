@@ -47,6 +47,7 @@ horizontal_alignment = 1
 
 [node name="SelectMenu" parent="MarginContainer/VBoxContainer" unique_id=1729985181 instance=ExtResource("2_gjwmd")]
 layout_mode = 2
+vertical = true
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=1995098880]
 layout_mode = 2

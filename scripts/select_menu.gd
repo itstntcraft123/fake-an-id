@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends BoxContainer
 
 signal selected(index: int, item: Control)
 
