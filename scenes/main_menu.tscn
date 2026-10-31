@@ -5,9 +5,26 @@
 [ext_resource type="PackedScene" uid="uid://bmdsk1kuk34xi" path="res://scenes/select_menu.tscn" id="2_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://bpxr1xdodvt5y" path="res://sprites/home-sceen-id-draft.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://ctyepyutkmtva" path="res://sprites/play-button.png" id="5_8ln24"]
+[ext_resource type="Texture2D" uid="uid://dwpaimymi3n3f" path="res://sprites/options-placeholder.png" id="6_oa1go"]
+[ext_resource type="Texture2D" uid="uid://dil7n7jcxyn80" path="res://sprites/quit-placeholder.png" id="7_tbmy8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5sy4"]
 texture = ExtResource("5_8ln24")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2iy26"]
+texture = ExtResource("5_8ln24")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rtw2f"]
+texture = ExtResource("6_oa1go")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oa1go"]
+texture = ExtResource("6_oa1go")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
+texture = ExtResource("7_tbmy8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jk1qb"]
+texture = ExtResource("7_tbmy8")
 
 [node name="MainMenu" type="Control" unique_id=99506797]
 layout_mode = 3
@@ -39,6 +56,7 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1140747918]
 layout_mode = 2
 theme_override_constants/separation = 25
+alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1201592543]
 layout_mode = 2
@@ -47,23 +65,34 @@ theme_override_font_sizes/font_size = 180
 text = "Fake An ID"
 horizontal_alignment = 1
 
-[node name="SelectMenu" parent="MarginContainer/VBoxContainer" unique_id=1729985181 instance=ExtResource("2_ekxnf")]
+[node name="MainMenu" parent="MarginContainer/VBoxContainer" unique_id=1729985181 instance=ExtResource("2_ekxnf")]
 layout_mode = 2
+theme_override_constants/separation = 150
+alignment = 1
+show_arrow = false
 
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=1295318933]
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/MainMenu" unique_id=1295318933]
 texture_filter = 1
+custom_minimum_size = Vector2(400, 200)
+custom_maximum_size = Vector2(400, 200)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_u5sy4")
-text = "start"
-icon = ExtResource("5_8ln24")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2iy26")
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=270986237]
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/MainMenu" unique_id=270986237]
+texture_filter = 1
+custom_minimum_size = Vector2(400, 200)
+custom_maximum_size = Vector2(400, 200)
 layout_mode = 2
-text = "options
-"
+theme_override_styles/normal = SubResource("StyleBoxTexture_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oa1go")
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=1750955982]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/MainMenu" unique_id=1750955982]
+texture_filter = 1
+custom_minimum_size = Vector2(400, 200)
+custom_maximum_size = Vector2(400, 200)
 layout_mode = 2
-text = "quit game"
+theme_override_styles/normal = SubResource("StyleBoxTexture_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jk1qb")
 
-[connection signal="selected" from="MarginContainer/VBoxContainer/SelectMenu" to="." method="_on_select_menu_selected"]
+[connection signal="selected" from="MarginContainer/VBoxContainer/MainMenu" to="." method="_on_select_menu_selected"]

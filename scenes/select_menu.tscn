@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dco1cagudndq3" path="res://scripts/select_menu.gd" id="1_jsvjb"]
 
-[node name="SelectMenu" type="VBoxContainer" unique_id=1729985181]
+[node name="SelectMenu" type="BoxContainer" unique_id=480102067]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_jsvjb")

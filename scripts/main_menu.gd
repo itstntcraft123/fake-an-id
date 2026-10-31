@@ -11,6 +11,7 @@ func _on_select_menu_selected(index: int, item: Control) -> void:
 		"Start":
 			get_tree().change_scene_to_file("res://scenes/game.tscn")
 		"Options":
-			Utils.switch_scene_as_child(self, "res://scenes/options.tscn", $MarginContainer/VBoxContainer/SelectMenu/Options, [$MarginContainer, $TextureRect])
+			print("item: ", item) # debugging
+			Utils.switch_scene_as_child(self, "res://scenes/options.tscn", item, [$MarginContainer, $TextureRect])
 		"Quit":
 			get_tree().quit()

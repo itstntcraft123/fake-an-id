@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends BoxContainer
 
 signal selected(index: int, item: Control)
 
@@ -8,15 +8,22 @@ var prev_hovered: Control = null
 const arrow_prefix := "> "
 const arrow_suffix := " >"
 var arrow_shown := false
+@export var show_arrow := true
+@export var hover_scale := Vector2(1.1, 1.1)
+@export var tween_time := 0.1
 @onready var timer_interval: float = $Timer.wait_time
 
 func _input(event: InputEvent) -> void:
+	if not show_arrow:
+		return
 	if event.is_action("ui_down") or event.is_action("ui_up"):
 		reset_arrow()
 		$Timer.start(timer_interval / 4)
 		arrow_shown = false
 
 func _ready() -> void:
+	if not show_arrow:
+		$Timer.stop()
 	var children = get_children()
 	focus_children(children)
 	for i in range(children.size()):
@@ -29,7 +36,7 @@ func _ready() -> void:
 			var min_size = child.get_combined_minimum_size()
 			child.custom_minimum_size = min_size
 			child.text = ""
-			
+			set
 			label.set_meta("orig_text", orig_text)
 			label.add_theme_font_size_override("normal_font_size", child.get_theme_font_size("font_size"))
 			label.fit_content = true
@@ -45,6 +52,23 @@ func _ready() -> void:
 			
 			set_arrow(label, false)
 			child.pressed.connect(_on_button_pressed.bind(i, child))
+			child.focus_entered.connect(_tween_scale.bind(child, hover_scale))
+			child.focus_exited.connect(_tween_scale.bind(child, Vector2.ONE))
+	sort_children.connect(_reapply_scale)
+
+func _tween_scale(button: Control, target: Vector2) -> void:
+	button.pivot_offset = button.size / 2.0
+	var tween := button.create_tween()
+	tween.tween_property(button, "scale", target, tween_time)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func _reapply_scale() -> void:
+	var focused := get_viewport().gui_get_focus_owner()
+	for child in get_children():
+		if child is Button:
+			child.pivot_offset = child.size / 2.0
+			child.scale = hover_scale if child == focused else Vector2.ONE
+
 
 func get_hovered_child() -> Control:
 	var pos = get_global_mouse_position()
@@ -83,6 +107,7 @@ func focus_children(children) -> void:
 		count += 1
 
 func set_arrow(label: RichTextLabel, on: bool) -> void:
+	on = on and show_arrow
 	var orig_text = label.get_meta("orig_text")
 	var color := label.get_theme_color("default_color").to_html()
 	label.text = "[color=#" + color + "]" + arrow_prefix + "[/color]" + orig_text + make_invis(arrow_suffix) if on else make_invis(arrow_prefix) + orig_text + make_invis(arrow_suffix)
