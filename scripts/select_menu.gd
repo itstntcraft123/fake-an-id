@@ -36,7 +36,7 @@ func _ready() -> void:
 			var min_size = child.get_combined_minimum_size()
 			child.custom_minimum_size = min_size
 			child.text = ""
-			set
+
 			label.set_meta("orig_text", orig_text)
 			label.add_theme_font_size_override("normal_font_size", child.get_theme_font_size("font_size"))
 			label.fit_content = true

@@ -4,8 +4,6 @@ var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
 	rng.randomize()
-	for i in range(10):
-		print(random_restr(random_class()))
 
 func random_first_name(gender: String) -> String:
 	var data = read_data("names.json")
@@ -28,12 +26,47 @@ func random_address() -> String:
 	return str(randi_range(1000, 9999)) + " " + random(street) + "\n" + \
 		random(city) + ", " + random(state) + str(randi_range(1000, 9999))
 
-func random_dob() -> String:
-	const min_date = 0 # a unix timestamp
-	var max_date = max(Time.get_unix_time_from_system() - 504910816, 1288111620)
-	
-	var random_date = Time.get_datetime_dict_from_unix_time(randi_range(int(min_date), int(max_date)))
-	return str(random_date["year"]) + "/" + str(random_date["month"]) + "/" + str(random_date["day"])
+func random_dob() -> Dictionary:
+	# age group data from www.fhwa.dot.gov/policyinformation/statistics/2023/dl20.cfm
+	var age_group: Dictionary = nested_weighted_random(read_data("age_groups.json"))
+	var age: int = randi_range(age_group["min"], age_group["max"])
+	var current_date = get_date()
+	var max_date = current_date.duplicate()
+	max_date["year"] -= age
+	var min_date = max_date.duplicate()
+	min_date["year"] -= 1
+
+	return Time.get_datetime_dict_from_unix_time(randi_range(Time.get_unix_time_from_datetime_dict(min_date), Time.get_unix_time_from_datetime_dict(max_date)))
+
+func date_to_str(date: Dictionary) -> String:
+	return str(date["year"]) + "/" + str(date["month"]) + "/" + str(date["day"])
+
+func random_exp(dob: Dictionary) -> String:
+	var expired: bool = randf() < 0.2
+	var date: Dictionary = dob.duplicate()
+	var possible_exps = get_possible_exps(dob, expired)
+	date["year"] = random(possible_exps)
+	return date_to_str(date)
+
+func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
+	var current_year = get_date()["year"]
+	if expired:
+		var year: int = dob["year"] + 18
+		var result: Array[int] = []
+		while year < current_year:
+			result.append(year)
+			year += 5
+		return result
+	else:
+		for i in range(current_year, current_year + 6):
+			if (i - (dob["year"] + 3)) % 5 == 0 and not is_expired(dob, i):
+				return [i]
+		return [0]
+
+func is_expired(dob: Dictionary, year: int) -> bool:
+	var date = dob.duplicate()
+	date["year"] = year
+	return date_is_larger(get_date(), date)
 
 func random_class() -> String:
 	return weighted_random({
@@ -103,8 +136,14 @@ func random_eye_color() -> String:
 		"UNK": 0.033
 	})
 
+func get_date() -> Dictionary:
+	return Time.get_datetime_dict_from_unix_time(max(Time.get_unix_time_from_system(), 1793404800))
+
+func date_is_larger(date1: Dictionary, date2: Dictionary) -> bool:
+	return Time.get_unix_time_from_datetime_dict(date1) > Time.get_unix_time_from_datetime_dict(date2)
+
 func random(array: Array) -> Variant:
-	return array[randi_range(0, array.size())]
+	return array.pick_random()
 
 func weighted_random_num(minimum: float, maximum: float, mean: float, deviation: float) -> float:
 	return clampf(rng.randfn(mean, deviation), minimum, maximum)
@@ -119,7 +158,7 @@ func test_weighted_random_num_func(function: Callable, tests: int, round_by: int
 func test_weighted_random_num(minimum: float, maximum: float, mean: float, deviation: float, tests: int, round_by: int) -> Dictionary:
 	return test_weighted_random_num_func(func(): return weighted_random_num(minimum, maximum, mean, deviation), tests, round_by)
 
-func weighted_random(dict: Dictionary) -> Variant:
+func weighted_random(dict: Dictionary) -> Variant: # { "key": 0.01 }
 	return dict.keys()[rng.rand_weighted(PackedFloat32Array(dict.values()))]
 
 func test_weighted_random_func(function: Callable, tests: int) -> Dictionary:
@@ -133,6 +172,9 @@ func test_weighted_random_func(function: Callable, tests: int) -> Dictionary:
 
 func test_weighted_random(dict: Dictionary, tests: int) -> Dictionary:
 	return test_weighted_random_func(func(): return weighted_random(dict), tests)
+
+func nested_weighted_random(array: Array) -> Dictionary: # [ { "chance": 0.01, "key": "value" } ]
+	return array[rng.rand_weighted(PackedFloat32Array(array.map(func(dict): return dict.get("chance"))))]
 
 func indep_weighted_random(dict: Dictionary) -> Array:
 	var results := []
