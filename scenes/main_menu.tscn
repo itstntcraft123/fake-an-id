@@ -11,10 +11,19 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5sy4"]
 texture = ExtResource("5_8ln24")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2iy26"]
+texture = ExtResource("5_8ln24")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rtw2f"]
 texture = ExtResource("6_oa1go")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oa1go"]
+texture = ExtResource("6_oa1go")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
+texture = ExtResource("7_tbmy8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jk1qb"]
 texture = ExtResource("7_tbmy8")
 
 [node name="MainMenu" type="Control" unique_id=99506797]
@@ -68,6 +77,7 @@ custom_minimum_size = Vector2(400, 200)
 custom_maximum_size = Vector2(400, 200)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_u5sy4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2iy26")
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer/MainMenu" unique_id=270986237]
 texture_filter = 1
@@ -75,6 +85,7 @@ custom_minimum_size = Vector2(400, 200)
 custom_maximum_size = Vector2(400, 200)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oa1go")
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/MainMenu" unique_id=1750955982]
 texture_filter = 1
@@ -82,5 +93,6 @@ custom_minimum_size = Vector2(400, 200)
 custom_maximum_size = Vector2(400, 200)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jk1qb")
 
 [connection signal="selected" from="MarginContainer/VBoxContainer/MainMenu" to="." method="_on_select_menu_selected"]

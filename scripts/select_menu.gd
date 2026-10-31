@@ -9,6 +9,8 @@ const arrow_prefix := "> "
 const arrow_suffix := " >"
 var arrow_shown := false
 @export var show_arrow := true
+@export var hover_scale := Vector2(1.1, 1.1)
+@export var tween_time := 0.1
 @onready var timer_interval: float = $Timer.wait_time
 
 func _input(event: InputEvent) -> void:
@@ -50,6 +52,23 @@ func _ready() -> void:
 			
 			set_arrow(label, false)
 			child.pressed.connect(_on_button_pressed.bind(i, child))
+			child.focus_entered.connect(_tween_scale.bind(child, hover_scale))
+			child.focus_exited.connect(_tween_scale.bind(child, Vector2.ONE))
+	sort_children.connect(_reapply_scale)
+
+func _tween_scale(button: Control, target: Vector2) -> void:
+	button.pivot_offset = button.size / 2.0
+	var tween := button.create_tween()
+	tween.tween_property(button, "scale", target, tween_time)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func _reapply_scale() -> void:
+	var focused := get_viewport().gui_get_focus_owner()
+	for child in get_children():
+		if child is Button:
+			child.pivot_offset = child.size / 2.0
+			child.scale = hover_scale if child == focused else Vector2.ONE
+
 
 func get_hovered_child() -> Control:
 	var pos = get_global_mouse_position()
