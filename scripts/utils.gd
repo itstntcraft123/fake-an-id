@@ -123,6 +123,8 @@ func read_data(filename: String) -> Variant:
 	return JSON.parse_string(content)
 
 func switch_scene_as_child(parent: Node, path: String, option: Node, hide: Array = [parent.get_node("MarginContainer")]) -> void:
+	print("option: ", option) # debugging
+	print("option: ", option, " valid: ", is_instance_valid(option)) # debugging
 	for node in hide:
 		node.hide()
 	var parent_prev_mode = parent.process_mode
