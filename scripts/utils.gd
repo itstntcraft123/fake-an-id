@@ -1,25 +1,22 @@
 extends Node
 # Unless cited in the function, the random_ functions do not reflect real data (or do so inaccurately).
-var rng = RandomNumberGenerator.new()
+var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
-	randomize()
-
-
+	rng.randomize()
+	for i in range(10):
+		print(random_restr(random_class()))
 
 func random_first_name(gender: String) -> String:
 	var data = read_data("names.json")
 	
-	var male: Array = data["male_first_names"]
-	var female: Array = data["female_first_names"]
-	
 	match gender: 
 		"M":
-			return random(male)
+			return weighted_random(data["male_first_names"])
 		"F":
-			return random(female)
+			return weighted_random(data["female_first_names"])
 		_: 
-			return random(male + female)
+			return weighted_random(data["male_first_names"].merged(data["female_first_names"]))
 
 func random_address() -> String:
 	var data = read_data("addresses.json")
@@ -33,7 +30,7 @@ func random_address() -> String:
 
 func random_dob() -> String:
 	const min_date = 0 # a unix timestamp
-	var max_date = max(Time.get_unix_time_from_system(), 1288111620)
+	var max_date = max(Time.get_unix_time_from_system() - 504910816, 1288111620)
 	
 	var random_date = Time.get_datetime_dict_from_unix_time(randi_range(int(min_date), int(max_date)))
 	return str(random_date["year"]) + "/" + str(random_date["month"]) + "/" + str(random_date["day"])
@@ -41,10 +38,37 @@ func random_dob() -> String:
 func random_class() -> String:
 	return weighted_random({
 		"D": 0.7,
-		"C": 0.15,
+		"C": 0.15, # (commercial C, not non-commerical)
 		"B": 0.075,
 		"A": 0.075
 	})
+
+func random_restr(id_class: String) -> String:
+	var data = {
+		"B": 0.35,
+		"C": 0.006,
+		"D": 0.002,
+		"E": 0.01,
+		"F": 0.01,
+		"G": 0.02,
+		"H": 0.006,
+		"I": 0.004,
+		"J": 0.01
+	}
+	if id_class != "D":
+		data.merge({
+			"E": 0.08,
+			"K": 0.05,
+			"L": 0.06,
+			"M": 0.03,
+			"N": 0.03,
+			"V": 0.01,
+			"Z": 0.02
+		})
+	var rand = remove_dupes(indep_weighted_random(data))
+	rand.sort()
+	var result = "".join(rand)
+	return result if result != "" else "NONE"
 
 func random_gender() -> String:
 	return weighted_random({
@@ -96,13 +120,7 @@ func test_weighted_random_num(minimum: float, maximum: float, mean: float, devia
 	return test_weighted_random_num_func(func(): return weighted_random_num(minimum, maximum, mean, deviation), tests, round_by)
 
 func weighted_random(dict: Dictionary) -> Variant:
-	var rand = randf()
-	var current = 0
-	for element in dict:
-		current += dict[element]
-		if current > rand:
-			return element
-	return null
+	return dict.keys()[rng.rand_weighted(PackedFloat32Array(dict.values()))]
 
 func test_weighted_random_func(function: Callable, tests: int) -> Dictionary:
 	var results = {}
@@ -115,6 +133,19 @@ func test_weighted_random_func(function: Callable, tests: int) -> Dictionary:
 
 func test_weighted_random(dict: Dictionary, tests: int) -> Dictionary:
 	return test_weighted_random_func(func(): return weighted_random(dict), tests)
+
+func indep_weighted_random(dict: Dictionary) -> Array:
+	var results := []
+	for item in dict:
+		if randf() < dict[item]:
+			results.append(item)
+	return results
+
+func remove_dupes(array: Array) -> Array:
+	var dict := {}
+	for item in array:
+		dict[item] = ""
+	return dict.keys()
 
 func read_data(filename: String) -> Variant:
 	var file = FileAccess.open("res://data/" + filename, FileAccess.READ)
