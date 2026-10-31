@@ -8,15 +8,20 @@ var prev_hovered: Control = null
 const arrow_prefix := "> "
 const arrow_suffix := " >"
 var arrow_shown := false
+@export var show_arrow := true
 @onready var timer_interval: float = $Timer.wait_time
 
 func _input(event: InputEvent) -> void:
+	if not show_arrow:
+		return
 	if event.is_action("ui_down") or event.is_action("ui_up"):
 		reset_arrow()
 		$Timer.start(timer_interval / 4)
 		arrow_shown = false
 
 func _ready() -> void:
+	if not show_arrow:
+		$Timer.stop()
 	var children = get_children()
 	focus_children(children)
 	for i in range(children.size()):
@@ -29,7 +34,7 @@ func _ready() -> void:
 			var min_size = child.get_combined_minimum_size()
 			child.custom_minimum_size = min_size
 			child.text = ""
-			
+			set
 			label.set_meta("orig_text", orig_text)
 			label.add_theme_font_size_override("normal_font_size", child.get_theme_font_size("font_size"))
 			label.fit_content = true
@@ -83,6 +88,7 @@ func focus_children(children) -> void:
 		count += 1
 
 func set_arrow(label: RichTextLabel, on: bool) -> void:
+	on = on and show_arrow
 	var orig_text = label.get_meta("orig_text")
 	var color := label.get_theme_color("default_color").to_html()
 	label.text = "[color=#" + color + "]" + arrow_prefix + "[/color]" + orig_text + make_invis(arrow_suffix) if on else make_invis(arrow_prefix) + orig_text + make_invis(arrow_suffix)
