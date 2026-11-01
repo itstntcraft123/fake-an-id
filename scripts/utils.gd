@@ -7,15 +7,19 @@ func _ready() -> void:
 
 func random_first_name(gender: String) -> String:
 	# data from archive.ics.uci.edu/dataset/591/gender+by+name
-	var data = read_data("names.json")
+	var data = read_data("first_names.json")
 	
 	match gender: 
 		"M":
-			return weighted_random(data["male_first_names"])
+			return weighted_random(data["male_first_names"]).to_upper()
 		"F":
-			return weighted_random(data["female_first_names"])
+			return weighted_random(data["female_first_names"]).to_upper()
 		_: 
-			return weighted_random(data["male_first_names"].merged(data["female_first_names"]))
+			return weighted_random(data["male_first_names"].merged(data["female_first_names"])).to_upper()
+
+func random_last_name() -> String:
+	# data from www.census.gov/topics/population/genealogy/data/2020_names.html
+	return weighted_random(read_data("last_names.json"))
 
 func random_address() -> String:
 	var data = read_data("addresses.json")

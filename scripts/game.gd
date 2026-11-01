@@ -10,6 +10,7 @@ func _ready() -> void:
 	$UI/Control/DriversClassLabel/DriversClass.text = Utils.random_class(age)
 	
 	$UI/Control/FirstNameLabel/FirstName.text = Utils.random_first_name(gender)
+	$UI/Control/LastNameLabel/LastName.text = Utils.random_last_name()
 	
 	$UI/Control/DoBLabel/DoB.text = Utils.date_to_str(dob)
 	$UI/Control/ExpireDateLabel/EXPDate.text = Utils.random_exp(dob)
