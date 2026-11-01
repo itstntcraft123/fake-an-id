@@ -28,8 +28,8 @@ func random_address() -> String:
 	var city: Array = data["cities"]
 	var state: Array = data["states"]
 	
-	return str(randi_range(1000, 9999)) + " " + random(street) + "\n" + \
-		random(city) + ", " + random(state) + str(randi_range(1000, 9999))
+	return str(randi_range(1000, 9999)) + " " + street.pick_random() + "\n" + \
+		city.pick_random() + ", " + state.pick_random() + str(randi_range(1000, 9999))
 
 func random_age() -> int:
 	# age group data from www.fhwa.dot.gov/policyinformation/statistics/2023/dl20.cfm
@@ -52,7 +52,7 @@ func random_exp(dob: Dictionary) -> String:
 	var expired: bool = randf() < 0.2
 	var date: Dictionary = dob.duplicate()
 	var possible_exps := get_possible_exps(dob, expired)
-	date["year"] = random(possible_exps)
+	date["year"] = possible_exps.pick_random()
 	return date_to_str(date)
 
 func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
@@ -149,9 +149,6 @@ func get_date() -> Dictionary:
 func date_is_larger(date1: Dictionary, date2: Dictionary) -> bool:
 	return Time.get_unix_time_from_datetime_dict(date1) > Time.get_unix_time_from_datetime_dict(date2)
 
-func random(array: Array) -> Variant:
-	return array.pick_random()
-
 func weighted_random_num(minimum: float, maximum: float, mean: float, deviation: float) -> float:
 	return clampf(rng.randfn(mean, deviation), minimum, maximum)
 
@@ -203,10 +200,11 @@ func read_data(filename: String) -> Variant:
 	return JSON.parse_string(content)
 
 func switch_scene_as_child(parent: Node, path: String, option: Node, hide: Array = [parent.get_node("MarginContainer")]) -> void:
-	print("option: ", option) # debugging
-	print("option: ", option, " valid: ", is_instance_valid(option)) # debugging
+	#print("option: ", option) # debugging
+	#print("option: ", option, " valid: ", is_instance_valid(option)) # debugging
 	for node in hide:
-		node.hide()
+		if is_instance_valid(node):
+			node.hide()
 	var parent_prev_mode := parent.process_mode
 	parent.process_mode = Node.PROCESS_MODE_DISABLED
 	var scene = load(path).instantiate()
@@ -218,7 +216,8 @@ func switch_scene_as_child(parent: Node, path: String, option: Node, hide: Array
 
 func on_tree_exited(parent: Node, option: Node, hide: Array = [], parent_prev_mode: Node.ProcessMode = Node.PROCESS_MODE_INHERIT) -> void:
 	for node in hide:
-		node.show()
+		if is_instance_valid(node):
+			node.show()
 	parent.process_mode = parent_prev_mode
 	option.grab_focus()
 

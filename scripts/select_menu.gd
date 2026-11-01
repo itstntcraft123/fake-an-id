@@ -69,7 +69,6 @@ func _reapply_scale() -> void:
 			child.pivot_offset = child.size / 2.0
 			child.scale = hover_scale if child == focused else Vector2.ONE
 
-
 func get_hovered_child() -> Control:
 	var pos := get_global_mouse_position()
 	for child in get_children():
