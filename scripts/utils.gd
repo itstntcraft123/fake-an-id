@@ -83,7 +83,7 @@ func random_class(age: int) -> String:
 		"A": 0.075
 	}) if age >= 18 else "D"
 
-func random_restr(id_class: String) -> String:
+func random_restr(id_class: String) -> String: # restrictions
 	var data := {
 		"B": 0.35,
 		"C": 0.006,
@@ -107,8 +107,24 @@ func random_restr(id_class: String) -> String:
 		})
 	var rand := remove_dupes(indep_weighted_random(data))
 	rand.sort()
+	rand.slice(0, 6) # avoid overflow in license
 	var result := "".join(rand)
-	return result if result != "" else "NONE"
+	return result if result else "NONE"
+
+func random_end(id_class: String) -> String: # endorsements
+	if id_class != "D":
+		var rand := remove_dupes(indep_weighted_random({
+			"N": 0.35,
+			"T": 0.3,
+			"H": 0.25,
+			"P": 0.15,
+			"S": 0.08,
+		}))
+		rand.sort()
+		rand.slice(0, 6) # avoid overflow in license
+		var result := "".join(rand)
+		return result if result else "NONE"
+	return "NONE"
 
 func random_gender() -> String:
 	return weighted_random({
