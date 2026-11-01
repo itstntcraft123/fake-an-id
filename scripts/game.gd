@@ -4,9 +4,10 @@ extends Node2D
 
 func _ready() -> void:
 	var gender := Utils.random_gender()
-	var dob := Utils.random_dob()
+	var age := Utils.random_age()
+	var dob := Utils.random_dob(age)
 	
-	$UI/Control/DriversClassLabel/DriversClass.text = Utils.random_class()
+	$UI/Control/DriversClassLabel/DriversClass.text = Utils.random_class(age)
 	
 	$UI/Control/FirstNameLabel/FirstName.text = Utils.random_first_name(gender)
 	

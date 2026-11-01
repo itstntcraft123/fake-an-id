@@ -6,6 +6,7 @@ func _ready() -> void:
 	rng.randomize()
 
 func random_first_name(gender: String) -> String:
+	# data from archive.ics.uci.edu/dataset/591/gender+by+name
 	var data = read_data("names.json")
 	
 	match gender: 
@@ -26,10 +27,12 @@ func random_address() -> String:
 	return str(randi_range(1000, 9999)) + " " + random(street) + "\n" + \
 		random(city) + ", " + random(state) + str(randi_range(1000, 9999))
 
-func random_dob() -> Dictionary:
+func random_age() -> int:
 	# age group data from www.fhwa.dot.gov/policyinformation/statistics/2023/dl20.cfm
 	var age_group: Dictionary = nested_weighted_random(read_data("age_groups.json"))
-	var age: int = randi_range(age_group["min"], age_group["max"])
+	return randi_range(age_group["min"], age_group["max"])
+
+func random_dob(age: int) -> Dictionary:
 	var current_date = get_date()
 	var max_date = current_date.duplicate()
 	max_date["year"] -= age
@@ -68,13 +71,13 @@ func is_expired(dob: Dictionary, year: int) -> bool:
 	date["year"] = year
 	return date_is_larger(get_date(), date)
 
-func random_class() -> String:
+func random_class(age: int) -> String:
 	return weighted_random({
 		"D": 0.7,
 		"C": 0.15, # (commercial C, not non-commerical)
 		"B": 0.075,
 		"A": 0.075
-	})
+	}) if age >= 18 else "D"
 
 func random_restr(id_class: String) -> String:
 	var data = {
