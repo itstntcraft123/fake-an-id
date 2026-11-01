@@ -24,16 +24,16 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	if not show_arrow:
 		$Timer.stop()
-	var children = get_children()
+	var children := get_children()
 	focus_children(children)
 	for i in range(children.size()):
-		var child = children[i]
+		var child := children[i]
 		if child is Button:
-			var orig_text = child.text.strip_edges()
-			var label = RichTextLabel.new()
+			var orig_text: String = child.text.strip_edges()
+			var label := RichTextLabel.new()
 			label.text = child.text
 			child.text = arrow_prefix + orig_text + arrow_suffix
-			var min_size = child.get_combined_minimum_size()
+			var min_size: Vector2 = child.get_combined_minimum_size()
 			child.custom_minimum_size = min_size
 			child.text = ""
 
@@ -71,14 +71,14 @@ func _reapply_scale() -> void:
 
 
 func get_hovered_child() -> Control:
-	var pos = get_global_mouse_position()
+	var pos := get_global_mouse_position()
 	for child in get_children():
 		if child is Control and child.visible and child.get_global_rect().has_point(pos):
 			return child
 	return null
 
-func _process(delta: float) -> void:
-	var hovered = get_hovered_child()
+func _process(_delta: float) -> void:
+	var hovered := get_hovered_child()
 	if hovered and hovered != prev_hovered:
 		reset_arrow()
 		hovered.grab_focus()
@@ -92,14 +92,14 @@ func _on_timer_timeout() -> void:
 	$Timer.wait_time = timer_interval
 	for child in get_children():
 		if child is Button and child.visible:
-			var label = child.get_child(0)
+			var label := child.get_child(0)
 			if label is RichTextLabel:
 				set_arrow(label, child == get_viewport().gui_get_focus_owner() and arrow_shown)
 	arrow_shown = !arrow_shown
 
 func focus_children(children) -> void:
-	var focused = false
-	var count = 0
+	var focused := false
+	var count := 0
 	while count < children.size() and focused == false:
 		if children[count] is Button:
 			children[count].grab_focus()
@@ -108,7 +108,7 @@ func focus_children(children) -> void:
 
 func set_arrow(label: RichTextLabel, on: bool) -> void:
 	on = on and show_arrow
-	var orig_text = label.get_meta("orig_text")
+	var orig_text: String = label.get_meta("orig_text")
 	var color := label.get_theme_color("default_color").to_html()
 	label.text = "[color=#" + color + "]" + arrow_prefix + "[/color]" + orig_text + make_invis(arrow_suffix) if on else make_invis(arrow_prefix) + orig_text + make_invis(arrow_suffix)
 
@@ -118,14 +118,14 @@ func make_invis(text: String) -> String:
 func reset_arrow() -> void:
 	for child in get_children():
 		if child is Button and child.visible:
-			var label = child.get_child(0)
+			var label := child.get_child(0)
 			if label is RichTextLabel:
 				set_arrow(label, false)
 
 func update_label():
 	for child in get_children():
 		if child is Button:
-			var label = child.get_child(0)
+			var label := child.get_child(0)
 			if label is RichTextLabel:
 				if child == get_viewport().gui_get_focus_owner():
 					if child.is_pressed():

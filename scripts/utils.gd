@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func random_first_name(gender: String) -> String:
 	# data from archive.ics.uci.edu/dataset/591/gender+by+name
-	var data = read_data("first_names.json")
+	var data: Dictionary = read_data("first_names.json")
 	
 	match gender: 
 		"M":
@@ -22,7 +22,7 @@ func random_last_name() -> String:
 	return weighted_random(read_data("last_names.json"))
 
 func random_address() -> String:
-	var data = read_data("addresses.json")
+	var data: Dictionary = read_data("addresses.json")
 	
 	var street: Array = data["streets"]
 	var city: Array = data["cities"]
@@ -37,10 +37,10 @@ func random_age() -> int:
 	return randi_range(age_group["min"], age_group["max"])
 
 func random_dob(age: int) -> Dictionary:
-	var current_date = get_date()
-	var max_date = current_date.duplicate()
+	var current_date := get_date()
+	var max_date := current_date.duplicate()
 	max_date["year"] -= age
-	var min_date = max_date.duplicate()
+	var min_date := max_date.duplicate()
 	min_date["year"] -= 1
 
 	return Time.get_datetime_dict_from_unix_time(randi_range(Time.get_unix_time_from_datetime_dict(min_date), Time.get_unix_time_from_datetime_dict(max_date)))
@@ -51,12 +51,12 @@ func date_to_str(date: Dictionary) -> String:
 func random_exp(dob: Dictionary) -> String:
 	var expired: bool = randf() < 0.2
 	var date: Dictionary = dob.duplicate()
-	var possible_exps = get_possible_exps(dob, expired)
+	var possible_exps := get_possible_exps(dob, expired)
 	date["year"] = random(possible_exps)
 	return date_to_str(date)
 
 func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
-	var current_year = get_date()["year"]
+	var current_year: int = get_date()["year"]
 	if expired:
 		var year: int = dob["year"] + 18
 		var result: Array[int] = []
@@ -71,7 +71,7 @@ func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
 		return [0]
 
 func is_expired(dob: Dictionary, year: int) -> bool:
-	var date = dob.duplicate()
+	var date := dob.duplicate()
 	date["year"] = year
 	return date_is_larger(get_date(), date)
 
@@ -84,7 +84,7 @@ func random_class(age: int) -> String:
 	}) if age >= 18 else "D"
 
 func random_restr(id_class: String) -> String:
-	var data = {
+	var data := {
 		"B": 0.35,
 		"C": 0.006,
 		"D": 0.002,
@@ -105,9 +105,9 @@ func random_restr(id_class: String) -> String:
 			"V": 0.01,
 			"Z": 0.02
 		})
-	var rand = remove_dupes(indep_weighted_random(data))
+	var rand := remove_dupes(indep_weighted_random(data))
 	rand.sort()
-	var result = "".join(rand)
+	var result := "".join(rand)
 	return result if result != "" else "NONE"
 
 func random_gender() -> String:
@@ -118,7 +118,7 @@ func random_gender() -> String:
 	})
 
 func random_height() -> String:
-	var height = weighted_random_num(58, 96, 67, 3)
+	var height := weighted_random_num(58, 96, 67, 3)
 	return str(floori(height / 12)) + "'-" + str(int(height) % 12) + "\""
 
 func random_weight() -> String:
@@ -156,7 +156,7 @@ func weighted_random_num(minimum: float, maximum: float, mean: float, deviation:
 	return clampf(rng.randfn(mean, deviation), minimum, maximum)
 
 func test_weighted_random_num_func(function: Callable, tests: int, round_by: int = -1) -> Dictionary:
-	var results = {}
+	var results := {}
 	for i in range(tests):
 		var rand = function.call() if round_by == -1 else snapped(function.call(), round_by)
 		results[rand] = results.get(rand, 0) + 1
@@ -169,7 +169,7 @@ func weighted_random(dict: Dictionary) -> Variant: # { "key": 0.01 }
 	return dict.keys()[rng.rand_weighted(PackedFloat32Array(dict.values()))]
 
 func test_weighted_random_func(function: Callable, tests: int) -> Dictionary:
-	var results = {}
+	var results := {}
 	for i in range(tests):
 		var rand = function.call()
 		results[rand] = results.get(rand, 0) + 1
@@ -197,8 +197,8 @@ func remove_dupes(array: Array) -> Array:
 	return dict.keys()
 
 func read_data(filename: String) -> Variant:
-	var file = FileAccess.open("res://data/" + filename, FileAccess.READ)
-	var content = file.get_as_text()
+	var file := FileAccess.open("res://data/" + filename, FileAccess.READ)
+	var content := file.get_as_text()
 	file.close()
 	return JSON.parse_string(content)
 
@@ -207,7 +207,7 @@ func switch_scene_as_child(parent: Node, path: String, option: Node, hide: Array
 	print("option: ", option, " valid: ", is_instance_valid(option)) # debugging
 	for node in hide:
 		node.hide()
-	var parent_prev_mode = parent.process_mode
+	var parent_prev_mode := parent.process_mode
 	parent.process_mode = Node.PROCESS_MODE_DISABLED
 	var scene = load(path).instantiate()
 	scene.tree_exited.connect(on_tree_exited.bind(parent, option, hide, parent_prev_mode))
