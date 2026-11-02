@@ -84,6 +84,13 @@ func random_iss(dob: Dictionary, expiry: Dictionary) -> Dictionary: # issuing da
 	var unix := Time.get_unix_time_from_datetime_dict(date) - days_before_exp * 60 * 60 * 24
 	return Time.get_datetime_dict_from_unix_time(unix)
 
+func random_first_iss(dob: Dictionary, iss: Dictionary) -> Dictionary: # first issue date for random DD
+	var min_date: Dictionary = dob.duplicate()
+	min_date["year"] += 16
+	var max_date: Dictionary = iss.duplicate()
+	max_date["year"] -= 1
+	return rand_date(min_date, max_date)
+
 func is_expired(dob: Dictionary, year: int) -> bool:
 	var date := dob.duplicate()
 	date["year"] = year
@@ -178,6 +185,9 @@ func get_date() -> Dictionary:
 
 func date_is_larger(date1: Dictionary, date2: Dictionary) -> bool:
 	return Time.get_unix_time_from_datetime_dict(date1) > Time.get_unix_time_from_datetime_dict(date2)
+
+func rand_date(min_dict: Dictionary, max_dict: Dictionary) -> Dictionary:
+	return Time.get_datetime_dict_from_unix_time(randi_range(Time.get_unix_time_from_datetime_dict(min_dict), Time.get_unix_time_from_datetime_dict(max_dict)))
 
 func weighted_random_num(minimum: float, maximum: float, mean: float, deviation: float) -> float:
 	return clampf(rng.randfn(mean, deviation), minimum, maximum)
