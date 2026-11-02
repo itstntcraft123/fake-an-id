@@ -23,7 +23,7 @@ func _ready() -> void:
 	$UI/Control/WeightLabel/Weight.text = Utils.random_weight()
 	$UI/Control/EyeLabel/EyeColor.text = Utils.random_eye_color()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -5,10 +5,10 @@ var is_child: bool
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
-func _on_select_menu_selected(index: int, item: Control) -> void:
+func _on_select_menu_selected(_index: int, item: Control) -> void:
 	match item.name:
 		"Sounds":
 			pass
