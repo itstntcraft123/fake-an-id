@@ -5,9 +5,9 @@ var rng := RandomNumberGenerator.new()
 func _ready() -> void:
 	rng.randomize()
 
-func random_license_no() -> int:
+func random_license_no() -> String:
 	var alphabet := "abcdefghijklmnopqrstuvwxyz"
-	return Array(alphabet.split()).pick_random() + str(randi_range(0, 9999999)).pad_zeros(7)
+	return Array(alphabet.split()).pick_random().to_upper() + str(randi_range(0, 9999999)).pad_zeros(7)
 
 func random_first_name(gender: String) -> String:
 	# data from archive.ics.uci.edu/dataset/591/gender+by+name
