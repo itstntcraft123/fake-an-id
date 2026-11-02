@@ -6,6 +6,7 @@ func _ready() -> void:
 	var gender := Utils.random_gender()
 	var age := Utils.random_age()
 	var dob := Utils.random_dob(age)
+	var expiry := Utils.random_exp(dob)
 	
 	$UI/Control/DriversClassLabel/DriversClass.text = Utils.random_class(age)
 	
@@ -13,7 +14,8 @@ func _ready() -> void:
 	$UI/Control/LastNameLabel/LastName.text = Utils.random_last_name()
 	
 	$UI/Control/DoBLabel/DoB.text = Utils.date_to_str(dob)
-	$UI/Control/ExpireDateLabel/EXPDate.text = Utils.random_exp(dob)
+	$UI/Control/ExpireDateLabel/ExpDate.text = Utils.date_to_str(expiry)
+	#$UI/Control/IssueDateLabel/IssueDate.text = Utils.date_to_str(Utils.random_iss(expiry))
 	
 	$UI/Control/SexLabel/Sex.text = gender
 	$UI/Control/HeightLabel/Height.text = Utils.random_height()

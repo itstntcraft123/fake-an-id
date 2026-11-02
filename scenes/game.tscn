@@ -127,7 +127,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "EXP"
 
-[node name="EXPDate" type="Label" parent="UI/Control/ExpireDateLabel" unique_id=643385181]
+[node name="ExpDate" type="Label" parent="UI/Control/ExpireDateLabel" unique_id=643385181]
 layout_mode = 0
 offset_left = 80.0
 offset_top = -14.0

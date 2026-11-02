@@ -5,6 +5,10 @@ var rng := RandomNumberGenerator.new()
 func _ready() -> void:
 	rng.randomize()
 
+func random_license_no() -> int:
+	var alphabet := "abcdefghijklmnopqrstuvwxyz"
+	return Array(alphabet.split()).pick_random() + str(randi_range(0, 9999999)).pad_zeros(7)
+
 func random_first_name(gender: String) -> String:
 	# data from archive.ics.uci.edu/dataset/591/gender+by+name
 	var data: Dictionary = read_data("first_names.json")
@@ -48,12 +52,12 @@ func random_dob(age: int) -> Dictionary:
 func date_to_str(date: Dictionary) -> String:
 	return str(date["year"]) + "/" + str(date["month"]) + "/" + str(date["day"])
 
-func random_exp(dob: Dictionary) -> String:
+func random_exp(dob: Dictionary) -> Dictionary: # expiry date
 	var expired: bool = randf() < 0.2
 	var date: Dictionary = dob.duplicate()
 	var possible_exps := get_possible_exps(dob, expired)
 	date["year"] = possible_exps.pick_random()
-	return date_to_str(date)
+	return date
 
 func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
 	var current_year: int = get_date()["year"]
@@ -69,6 +73,16 @@ func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
 			if (i - (dob["year"] + 3)) % 5 == 0 and not is_expired(dob, i):
 				return [i]
 		return [0]
+
+func random_iss(dob: Dictionary, expiry: Dictionary) -> Dictionary: # issuing date, 5 years before expiry
+	var date: Dictionary = expiry.duplicate()
+	var days_before_exp := randi_range(-10, 30) # negative number means they forgot to renew in time
+	if date["year"] < dob["year"] + 18:
+		date["year"] = dob["year"] + 16 + randi_range(0, 2) if days_before_exp >= 0 else dob["year"] + 16 + randi_range(0,1)
+	else:
+		date["year"] -= 5
+	var unix := Time.get_unix_time_from_datetime_dict(date) - days_before_exp * 60 * 60 * 24
+	return Time.get_datetime_dict_from_unix_time(unix)
 
 func is_expired(dob: Dictionary, year: int) -> bool:
 	var date := dob.duplicate()
