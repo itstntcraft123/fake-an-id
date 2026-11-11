@@ -32,6 +32,7 @@ func _ready() -> void:
 		"height": Utils.random_height(),
 		"weight": Utils.random_weight(),
 		"eyes": Utils.random_eye_color(),
+		"hair": Utils.random_hair_color(),
 	}
 	
 	$UI/IDCard/DriversClassLabel/DriversClass.text = id_data["class"]
