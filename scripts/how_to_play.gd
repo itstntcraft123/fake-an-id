@@ -9,7 +9,7 @@ extends Control
 func _ready() -> void:
 	start_button.pressed.connect(_on_start_pressed)
 	back_button.pressed.connect(_on_back_presed)
-	start_button.grab_focus()
+	# start_button.grab_focus()
 	
 	
 func _on_start_pressed() -> void:
