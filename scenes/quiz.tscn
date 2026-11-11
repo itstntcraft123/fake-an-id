@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bo17s2krb6vwg"]
+
+[ext_resource type="Script" uid="uid://mifrix6spaja" path="res://scripts/quiz.gd" id="1_36y45"]
+
+[node name="Quiz" type="Control" unique_id=942844882]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_36y45")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=789501954]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1894656926]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=194180587]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ProgressLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1941312438]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="QuestionLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1346644685]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AnswerEdit" type="LineEdit" parent="CenterContainer/VBoxContainer" unique_id=1956852923]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SubmitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=876233312]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FeedbackLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=550199159]
+unique_name_in_owner = true
+layout_mode = 2

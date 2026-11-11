@@ -8,20 +8,20 @@ func _ready() -> void:
 	var dob := Utils.random_dob(age)
 	var expiry := Utils.random_exp(dob)
 	
-	$UI/Control/DriversClassLabel/DriversClass.text = Utils.random_class(age)
+	$UI/IDCard/DriversClassLabel/DriversClass.text = Utils.random_class(age)
 	
-	$UI/Control/FirstNameLabel/FirstName.text = Utils.random_first_name(gender)
-	$UI/Control/LastNameLabel/LastName.text = Utils.random_last_name()
+	$UI/IDCard/FirstNameLabel/FirstName.text = Utils.random_first_name(gender)
+	$UI/IDCard/LastNameLabel/LastName.text = Utils.random_last_name()
 	
-	$UI/Control/DoBLabel/DoB.text = Utils.date_to_str(dob)
-	$UI/Control/ExpireDateLabel/ExpDate.text = Utils.date_to_str(expiry)
+	$UI/IDCard/DoBLabel/DoB.text = Utils.date_to_str(dob)
+	$UI/IDCard/ExpireDateLabel/ExpDate.text = Utils.date_to_str(expiry)
 	#$UI/Control/IssueDateLabel/IssueDate.text = Utils.date_to_str(Utils.random_iss(expiry))
 	
-	$UI/Control/SexLabel/Sex.text = gender
-	$UI/Control/HeightLabel/Height.text = Utils.random_height()
-	$UI/Control/HairLabel/HairColor.text = Utils.random_hair_color()
-	$UI/Control/WeightLabel/Weight.text = Utils.random_weight()
-	$UI/Control/EyeLabel/EyeColor.text = Utils.random_eye_color()
+	$UI/IDCard/SexLabel/Sex.text = gender
+	$UI/IDCard/HeightLabel/Height.text = Utils.random_height()
+	$UI/IDCard/HairLabel/HairColor.text = Utils.random_hair_color()
+	$UI/IDCard/WeightLabel/Weight.text = Utils.random_weight()
+	$UI/IDCard/EyeLabel/EyeColor.text = Utils.random_eye_color()
 
 func _process(_delta: float) -> void:
 	pass
