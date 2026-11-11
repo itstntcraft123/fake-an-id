@@ -250,3 +250,17 @@ text = "[eyec]"
 
 [node name="Quiz" parent="UI" unique_id=942844882 instance=ExtResource("6_p57ef")]
 visible = false
+
+[node name="TimerLabel" type="Label" parent="UI" unique_id=1752270649]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="LivesLabel" type="Label" parent="UI" unique_id=210568411]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=1242551628]
+offset_right = 40.0
+offset_bottom = 95.0
+
+[node name="StudyTimer" type="Timer" parent="." unique_id=146617480]
