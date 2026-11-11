@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://cu7ybuxvrhbym"]
+
+[ext_resource type="Script" uid="uid://d2ssrw4nhgult" path="res://scripts/how_to_play.gd" id="1_d4i75"]
+[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="2_88ieg"]
+
+[node name="HowToPlay" type="Control" unique_id=282452302]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d4i75")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=107483280]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.46666667, 0.3529412, 0.96862745, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=3239069]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=20371083]
+custom_minimum_size = Vector2(1880, 1040)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=633952597]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=2100122133]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=652220938]
+custom_minimum_size = Vector2(750, 150)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_88ieg")
+theme_override_font_sizes/font_size = 128
+text = "How To Play"
+horizontal_alignment = 1
+
+[node name="Instructions" type="RichTextLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1098410656]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(700, 600)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_88ieg")
+theme_override_fonts/bold_font = ExtResource("2_88ieg")
+theme_override_fonts/bold_italics_font = ExtResource("2_88ieg")
+theme_override_fonts/italics_font = ExtResource("2_88ieg")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 42
+theme_override_font_sizes/italics_font_size = 16
+bbcode_enabled = true
+text = "[center][b]1. Study[/b]
+You'll be given an ID, study it like your life depends on it (it does).
+[font_size=2] [/font_size]
+[b]2. Wait[/b]
+A timer counts down, better use that time wisely.
+
+[b]3. Get Cooked[/b]
+When the timer hits zero, you will get asked questions. Don't answer wrong.
+
+[b][i]Score points through time and accuracy.[/i][/b]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=599726139]
+layout_mode = 2
+theme_override_constants/separation = 320
+alignment = 1
+
+[node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1471023887]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 160)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_88ieg")
+theme_override_font_sizes/font_size = 80
+text = "Back"
+
+[node name="StartButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1259044059]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 160)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_88ieg")
+theme_override_font_sizes/font_size = 80
+text = "Start"
