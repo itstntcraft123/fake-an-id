@@ -53,7 +53,7 @@ func _generate_id() -> void:
 	$UI/IDCard/FirstNameLabel/FirstName.text = id_data["first_name"]
 	$UI/IDCard/LastNameLabel/LastName.text = id_data["last_name"]
 	$UI/IDCard/DoBLabel/DoB.text = id_data["dob"]
-	$UI/IDCard/ExpireDateLabel/ExpDate.text = id_data["dob"]
+	$UI/IDCard/ExpireDateLabel/ExpDate.text = id_data["exp"]
 	$UI/IDCard/SexLabel/Sex.text = id_data["sex"]
 	$UI/IDCard/HeightLabel/Height.text = id_data["height"]
 	$UI/IDCard/HairLabel/HairColor.text = id_data["hair"]

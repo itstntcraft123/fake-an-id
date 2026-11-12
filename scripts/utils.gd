@@ -46,18 +46,37 @@ func random_dob(age: int) -> Dictionary:
 	max_date["year"] -= age
 	var min_date := max_date.duplicate()
 	min_date["year"] -= 1
-
 	return Time.get_datetime_dict_from_unix_time(randi_range(Time.get_unix_time_from_datetime_dict(min_date), Time.get_unix_time_from_datetime_dict(max_date)))
 
 func date_to_str(date: Dictionary) -> String:
 	return str(date["year"]) + "/" + str(date["month"]) + "/" + str(date["day"])
 
+func days_in_month(year: int, month: int) -> int:
+	match month:
+		2: 
+			var leap := (year % 4 == 0 and year % 100!= 0) or year % 400 == 0
+			return 29 if leap else 28
+		4, 6, 9, 11: 
+			return 30
+		_:
+			return 31
+
 func random_exp(dob: Dictionary) -> Dictionary: # expiry date
 	var expired: bool = randf() < 0.2
-	var date: Dictionary = dob.duplicate()
-	var possible_exps := get_possible_exps(dob, expired)
-	date["year"] = possible_exps.pick_random()
-	return date
+	var year: int = get_possible_exps(dob, expired).pick_random()
+	
+	# bruh liscenses are expiring in the past
+	var today := get_date()
+	if not expired and year == today["year"]:
+		var end_of_year := {"year": year, "month": 12, "day": 31}
+		return rand_date(today, end_of_year)
+	
+	var month := randi_range(1, 12)
+	return {
+		"year": year,
+		"month": month,
+		"day": randi_range(1, days_in_month(year, month)),
+	}
 
 func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
 	var current_year: int = get_date()["year"]
