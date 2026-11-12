@@ -26,14 +26,10 @@ func random_last_name() -> String:
 	return weighted_random(read_data("last_names.json"))
 
 func random_address() -> String:
-	var data: Dictionary = read_data("addresses.json")
+	# address data from github.com/EthanRBrown/rrad from OpenAddresses (public domain)
+	var address: Dictionary = read_data("addresses.json")["addresses"].pick_random()
 	
-	var street: Array = data["streets"]
-	var city: Array = data["cities"]
-	var state: Array = data["states"]
-	
-	return str(randi_range(1000, 9999)) + " " + street.pick_random() + "\n" + \
-		city.pick_random() + ", " + state.pick_random() + str(randi_range(1000, 9999))
+	return address["address1"] + "\n" + address["city"] + ", " + address["state"] + " " + address["postalCode"]
 
 func random_age() -> int:
 	# age group data from www.fhwa.dot.gov/policyinformation/statistics/2023/dl20.cfm

@@ -54,7 +54,8 @@ func _generate_id() -> void:
 		"dd": Utils.random_dd(dob, iss, expiry),
 		"endorsements": Utils.random_end(license_class),
 		"restrictions": Utils.random_restr(license_class),
-		"issue": iss
+		"issue": iss,
+		"address": Utils.random_address()
 	}
 	
 	$UI/IDCard/DriversClassLabel/DriversClass.text = id_data["class"]
