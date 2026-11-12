@@ -12,11 +12,25 @@ var score := 0 # for now just # of ids passed
 @onready var id_card: Control = $UI/IDCard
 @onready var quiz: Control = $UI/Quiz
 @onready var study_timer: Timer = $StudyTimer
-@onready var timer_lavel: Label = $UI/TimerLabel
+@onready var timer_label: Label = $UI/TimerLabel
 @onready var lives_label: Label = $UI/LivesLabel
 @onready var score_label: Label = $UI/ScoreLabel
 
 func _ready() -> void:
+	study_timer.one_shot = true
+	study_timer.timeout.connect(_on_study_over)
+	quiz.finished.connect(_on_quiz_finished)
+	_start_round()
+
+func _start_round() -> void:
+	_generate_id()
+	quiz.hide()
+	id_card.show()
+	timer_label.show()
+	_update_hud()
+	study_timer.start(maxf(8.0, study_time - score))
+
+func _generate_id() -> void: 
 	var gender := Utils.random_gender()
 	var age := Utils.random_age()
 	var dob := Utils.random_dob(age)
@@ -47,7 +61,34 @@ func _ready() -> void:
 	$UI/IDCard/EyeLabel/EyeColor.text = id_data["eyes"]
 
 func _process(_delta: float) -> void:
-	pass
+	if not study_timer.is_stopped():
+		timer_label.text = str(ceili(study_timer.time_left))
+
+func _on_study_over() -> void:
+	id_card.hide()
+	timer_label.hide()
+	quiz.show()
+	quiz.start(id_data, 2 + score)
+	
+func _on_quiz_finished(passed: bool) -> void:
+	if passed: 
+		score += 1
+	else: 
+		lives -= 1
+	_update_hud()
+	if lives <= 0:
+		_game_over()
+	else:
+		_start_round()
+
+func _game_over() -> void:
+	quiz.hide()
+	print("Game over. Score: " + str(score))
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _update_hud() -> void:
+	lives_label.text = "Lives: %d" % lives
+	score_label.text = "Score: %d" % score
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_close_dialog") and not has_node("EscapeScreen"):
