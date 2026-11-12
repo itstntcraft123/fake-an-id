@@ -5,6 +5,7 @@ var rng := RandomNumberGenerator.new()
 func _ready() -> void:
 	rng.randomize()
 
+# Random functions
 func random_license_no() -> String:
 	return random_string(1) + random_num(7)
 
@@ -47,9 +48,6 @@ func random_dob(age: int) -> Dictionary:
 	min_date["year"] -= 1
 	return Time.get_datetime_dict_from_unix_time(randi_range(Time.get_unix_time_from_datetime_dict(min_date), Time.get_unix_time_from_datetime_dict(max_date)))
 
-func date_to_str(date: Dictionary) -> String:
-	return str(date["month"]).pad_zeros(2) + "/" + str(date["day"]).pad_zeros(2) + "/" + str(date["year"]).pad_zeros(4)
-
 func days_in_month(year: int, month: int) -> int:
 	match month:
 		2: 
@@ -61,21 +59,12 @@ func days_in_month(year: int, month: int) -> int:
 			return 31
 
 func random_exp(dob: Dictionary) -> Dictionary: # expiry date
+	# licenses can be expired
 	var expired: bool = randf() < 0.2
-	var year: int = get_possible_exps(dob, expired).pick_random()
-	
-	# bruh liscenses are expiring in the past
-	var today := get_date()
-	if not expired and year == today["year"]:
-		var end_of_year := {"year": year, "month": 12, "day": 31}
-		return rand_date(today, end_of_year)
-	
-	var month := randi_range(1, 12)
-	return {
-		"year": year,
-		"month": month,
-		"day": randi_range(1, days_in_month(year, month)),
-	}
+	var date: Dictionary = dob.duplicate()
+	var possible_exps := get_possible_exps(dob, expired)
+	date["year"] = possible_exps.pick_random()
+	return date
 
 func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
 	var current_year: int = get_date()["year"]
@@ -200,6 +189,10 @@ func random_eye_color() -> String:
 		"GRY": 0.007,
 		"UNK": 0.033
 	})
+
+# Helper functions
+func date_to_str(date: Dictionary) -> String:
+	return str(date["month"]).pad_zeros(2) + "/" + str(date["day"]).pad_zeros(2) + "/" + str(date["year"]).pad_zeros(4)
 
 func random_string(length: int) -> String:
 	const alphabet := "abcdefghijklmnopqrstuvwxyz"

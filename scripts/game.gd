@@ -35,9 +35,11 @@ func _generate_id() -> void:
 	var age := Utils.random_age()
 	var dob := Utils.random_dob(age)
 	var expiry := Utils.random_exp(dob)
+	var iss := Utils.random_iss(dob, expiry)
+	var license_class := Utils.random_class(age)
 	
 	id_data = {
-		"class": Utils.random_class(age), 
+		"class": license_class, 
 		"first_name": Utils.random_first_name(gender),
 		"last_name": Utils.random_last_name(), 
 		"dob": Utils.date_to_str(dob),
@@ -47,6 +49,12 @@ func _generate_id() -> void:
 		"weight": Utils.random_weight(),
 		"eyes": Utils.random_eye_color(),
 		"hair": Utils.random_hair_color(),
+		# new values
+		"license_no": Utils.random_license_no(),
+		"dd": Utils.random_dd(dob, iss, expiry),
+		"endorsements": Utils.random_end(license_class),
+		"restrictions": Utils.random_restr(license_class),
+		"issue": iss
 	}
 	
 	$UI/IDCard/DriversClassLabel/DriversClass.text = id_data["class"]
