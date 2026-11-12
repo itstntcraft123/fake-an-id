@@ -51,9 +51,9 @@ text = "CLASS"
 [node name="DriversClass" type="Label" parent="UI/IDCard/DriversClassLabel" unique_id=2102863602]
 layout_mode = 0
 offset_left = 134.0
-offset_top = -24.0
+offset_top = -20.0
 offset_right = 937.0
-offset_bottom = 55.0
+offset_bottom = 59.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "[class]"
@@ -140,9 +140,9 @@ text = "[expDate]"
 
 [node name="DDLabel" type="Label" parent="UI/IDCard" unique_id=676266183]
 layout_mode = 0
-offset_left = 1130.0
+offset_left = 1129.0
 offset_top = 573.0
-offset_right = 1315.0
+offset_right = 1314.0
 offset_bottom = 626.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -151,9 +151,9 @@ text = "DD"
 [node name="DD" type="Label" parent="UI/IDCard/DDLabel" unique_id=2147450604]
 layout_mode = 0
 offset_left = 63.0
-offset_top = -5.0
+offset_top = -3.0
 offset_right = 445.0
-offset_bottom = 74.0
+offset_bottom = 76.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 text = "[dd] [dd] [dd] [dd] [dd]"
@@ -161,9 +161,9 @@ text = "[dd] [dd] [dd] [dd] [dd]"
 [node name="AddressLabel" type="Label" parent="UI/IDCard" unique_id=377110202]
 layout_mode = 0
 offset_left = 751.0
-offset_top = 738.0
+offset_top = 736.0
 offset_right = 1063.0
-offset_bottom = 791.0
+offset_bottom = 789.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "ADDRESS"
@@ -190,9 +190,9 @@ text = "LISCENSE"
 [node name="LicenseNo" type="Label" parent="UI/IDCard/LicenseLabel" unique_id=954225392]
 layout_mode = 0
 offset_left = 190.0
-offset_top = -19.0
+offset_top = -14.0
 offset_right = 466.0
-offset_bottom = 60.0
+offset_bottom = 65.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 55
 text = "[liscense]"
@@ -210,9 +210,9 @@ text = "ENDORSEMENTS"
 [node name="Endorcements" type="Label" parent="UI/IDCard/EndorsementsLabel" unique_id=142407552]
 layout_mode = 0
 offset_left = 322.0
-offset_top = -20.0
+offset_top = -15.0
 offset_right = 719.0
-offset_bottom = 59.0
+offset_bottom = 64.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 55
 text = "[endorcement]"
@@ -230,9 +230,9 @@ text = "RESTRICTIONS"
 [node name="Restrictions" type="Label" parent="UI/IDCard/RestrictionsLabel" unique_id=1954596060]
 layout_mode = 0
 offset_left = 280.0
-offset_top = -19.0
+offset_top = -14.0
 offset_right = 677.0
-offset_bottom = 60.0
+offset_bottom = 65.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 55
 text = "[restri.]"

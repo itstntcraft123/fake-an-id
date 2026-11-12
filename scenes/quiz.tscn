@@ -25,6 +25,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=194180587]
 unique_name_in_owner = true
 layout_mode = 2
+text = "quiz time :D"
 
 [node name="ProgressLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1941312438]
 unique_name_in_owner = true
