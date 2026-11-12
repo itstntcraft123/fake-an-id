@@ -73,8 +73,7 @@ func _on_submit(text: String) -> void:
 		feedback_label.text = "Wrong answer buddy. It was: " + correct_answer
 		await get_tree().create_timer(1.5).timeout
 		finished.emit(false)
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+
+func _process(_delta: float) -> void:
 	pass

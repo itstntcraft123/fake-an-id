@@ -6,8 +6,7 @@ func _ready() -> void:
 	rng.randomize()
 
 func random_license_no() -> String:
-	var alphabet := "abcdefghijklmnopqrstuvwxyz"
-	return Array(alphabet.split()).pick_random().to_upper() + str(randi_range(0, 9999999)).pad_zeros(7)
+	return random_string(1) + random_num(7)
 
 func random_first_name(gender: String) -> String:
 	# data from archive.ics.uci.edu/dataset/591/gender+by+name
@@ -49,7 +48,7 @@ func random_dob(age: int) -> Dictionary:
 	return Time.get_datetime_dict_from_unix_time(randi_range(Time.get_unix_time_from_datetime_dict(min_date), Time.get_unix_time_from_datetime_dict(max_date)))
 
 func date_to_str(date: Dictionary) -> String:
-	return str(date["year"]) + "/" + str(date["month"]) + "/" + str(date["day"])
+	return str(date["month"]).pad_zeros(2) + "/" + str(date["day"]).pad_zeros(2) + "/" + str(date["year"]).pad_zeros(4)
 
 func days_in_month(year: int, month: int) -> int:
 	match month:
@@ -109,6 +108,9 @@ func random_first_iss(dob: Dictionary, iss: Dictionary) -> Dictionary: # first i
 	var max_date: Dictionary = iss.duplicate()
 	max_date["year"] -= 1
 	return rand_date(min_date, max_date)
+
+func random_dd(dob: Dictionary, iss: Dictionary, expiry: Dictionary) -> String:
+	return date_to_str(random_first_iss(dob, iss)) + random_num(3) + random_string(3) + "/" + random_string(2) + str(expiry["year"]).right(2)
 
 func is_expired(dob: Dictionary, year: int) -> bool:
 	var date := dob.duplicate()
@@ -198,6 +200,17 @@ func random_eye_color() -> String:
 		"GRY": 0.007,
 		"UNK": 0.033
 	})
+
+func random_string(length: int) -> String:
+	const alphabet := "abcdefghijklmnopqrstuvwxyz"
+	var alphabet_array := Array(alphabet.split())
+	var result := ""
+	for i in range(length):
+		result += alphabet_array.pick_random().to_upper()
+	return result
+
+func random_num(length: int) -> String:
+	return str(randi_range(0, int("9".repeat(length)))).pad_zeros(length)
 
 func get_date() -> Dictionary:
 	return Time.get_datetime_dict_from_unix_time(max(Time.get_unix_time_from_system(), 1793404800))
