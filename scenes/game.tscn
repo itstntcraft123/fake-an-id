@@ -40,10 +40,10 @@ texture = ExtResource("5_iywne")
 
 [node name="DriversClassLabel" type="Label" parent="UI/IDCard" unique_id=1720002885]
 layout_mode = 0
-offset_left = 1195.0
-offset_top = 374.0
-offset_right = 1423.0
-offset_bottom = 427.0
+offset_left = 1128.0
+offset_top = 357.0
+offset_right = 1356.0
+offset_bottom = 410.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "CLASS"
@@ -51,9 +51,9 @@ text = "CLASS"
 [node name="DriversClass" type="Label" parent="UI/IDCard/DriversClassLabel" unique_id=2102863602]
 layout_mode = 0
 offset_left = 134.0
-offset_top = -22.0
+offset_top = -24.0
 offset_right = 937.0
-offset_bottom = 57.0
+offset_bottom = 55.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "[class]"
@@ -100,60 +100,179 @@ text = "[LN]"
 
 [node name="DoBLabel" type="Label" parent="UI/IDCard" unique_id=319141769]
 layout_mode = 0
-offset_left = 752.0
-offset_top = 581.0
-offset_right = 1188.0
-offset_bottom = 634.0
+offset_left = 749.0
+offset_top = 582.0
+offset_right = 1185.0
+offset_bottom = 635.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "DOB"
 
 [node name="DoB" type="Label" parent="UI/IDCard/DoBLabel" unique_id=2052988321]
 layout_mode = 0
-offset_left = 90.0
-offset_top = -12.0
-offset_right = 585.0
-offset_bottom = 67.0
+offset_left = 88.0
+offset_top = -8.0
+offset_right = 583.0
+offset_bottom = 71.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "[DoB]"
 
 [node name="ExpireDateLabel" type="Label" parent="UI/IDCard" unique_id=1213400034]
 layout_mode = 0
-offset_left = 753.0
-offset_top = 633.0
-offset_right = 874.0
-offset_bottom = 703.0
+offset_left = 751.0
+offset_top = 628.0
+offset_right = 872.0
+offset_bottom = 698.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "EXP"
 
 [node name="ExpDate" type="Label" parent="UI/IDCard/ExpireDateLabel" unique_id=643385181]
 layout_mode = 0
-offset_left = 89.0
-offset_top = -13.0
-offset_right = 311.0
-offset_bottom = 66.0
+offset_left = 85.0
+offset_top = -6.0
+offset_right = 307.0
+offset_bottom = 73.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "[expDate]"
+
+[node name="DDLabel" type="Label" parent="UI/IDCard" unique_id=676266183]
+layout_mode = 0
+offset_left = 1130.0
+offset_top = 573.0
+offset_right = 1315.0
+offset_bottom = 626.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "DD"
+
+[node name="DD" type="Label" parent="UI/IDCard/DDLabel" unique_id=2147450604]
+layout_mode = 0
+offset_left = 63.0
+offset_top = -5.0
+offset_right = 445.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "[dd] [dd] [dd] [dd] [dd]"
+
+[node name="AddressLabel" type="Label" parent="UI/IDCard" unique_id=377110202]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 738.0
+offset_right = 1063.0
+offset_bottom = 791.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "ADDRESS"
+
+[node name="Address" type="Label" parent="UI/IDCard/AddressLabel" unique_id=760419591]
+layout_mode = 0
+offset_left = 204.0
+offset_right = 601.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "[address]"
+
+[node name="LicenseLabel" type="Label" parent="UI/IDCard" unique_id=1244743100]
+layout_mode = 0
+offset_left = 1130.0
+offset_top = 405.0
+offset_right = 1315.0
+offset_bottom = 458.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "LISCENSE"
+
+[node name="LicenseNo" type="Label" parent="UI/IDCard/LicenseLabel" unique_id=954225392]
+layout_mode = 0
+offset_left = 190.0
+offset_top = -19.0
+offset_right = 466.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "[liscense]"
+
+[node name="EndorsementsLabel" type="Label" parent="UI/IDCard" unique_id=105807167]
+layout_mode = 0
+offset_left = 1129.0
+offset_top = 512.0
+offset_right = 1441.0
+offset_bottom = 565.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "ENDORSEMENTS"
+
+[node name="Endorcements" type="Label" parent="UI/IDCard/EndorsementsLabel" unique_id=142407552]
+layout_mode = 0
+offset_left = 322.0
+offset_top = -20.0
+offset_right = 719.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "[endorcement]"
+
+[node name="RestrictionsLabel" type="Label" parent="UI/IDCard" unique_id=1328342094]
+layout_mode = 0
+offset_left = 1129.0
+offset_top = 465.0
+offset_right = 1441.0
+offset_bottom = 518.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "RESTRICTIONS"
+
+[node name="Restrictions" type="Label" parent="UI/IDCard/RestrictionsLabel" unique_id=1954596060]
+layout_mode = 0
+offset_left = 280.0
+offset_top = -19.0
+offset_right = 677.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "[restri.]"
+
+[node name="IssueLabel" type="Label" parent="UI/IDCard" unique_id=561446141]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 674.0
+offset_right = 1063.0
+offset_bottom = 727.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "ISS"
+
+[node name="Issues" type="Label" parent="UI/IDCard/IssueLabel" unique_id=913208823]
+layout_mode = 0
+offset_left = 84.0
+offset_top = -6.0
+offset_right = 481.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "[issue]"
 
 [node name="Image2" type="TextureRect" parent="UI/IDCard" unique_id=1414128172]
 self_modulate = Color(1, 1, 1, 0.5372549)
 texture_filter = 1
 layout_mode = 0
-offset_left = 1165.0
-offset_top = 706.0
-offset_right = 1328.0
-offset_bottom = 881.0
+offset_left = 1245.0
+offset_top = 714.0
+offset_right = 1408.0
+offset_bottom = 889.0
 texture = ExtResource("5_iywne")
 
 [node name="SexLabel" type="Label" parent="UI/IDCard" unique_id=1940188850]
 layout_mode = 0
-offset_left = 1009.0
-offset_top = 853.0
-offset_right = 1086.0
-offset_bottom = 893.0
+offset_left = 1089.0
+offset_top = 861.0
+offset_right = 1166.0
+offset_bottom = 901.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "SEX"
@@ -170,10 +289,10 @@ text = "[sex]"
 
 [node name="HeightLabel" type="Label" parent="UI/IDCard" unique_id=23549392]
 layout_mode = 0
-offset_left = 1011.0
-offset_top = 890.0
-offset_right = 1088.0
-offset_bottom = 930.0
+offset_left = 1091.0
+offset_top = 898.0
+offset_right = 1168.0
+offset_bottom = 938.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "HGT"
@@ -190,10 +309,10 @@ text = "[hgt]"
 
 [node name="HairLabel" type="Label" parent="UI/IDCard" unique_id=616471486]
 layout_mode = 0
-offset_left = 1165.0
-offset_top = 851.0
-offset_right = 1242.0
-offset_bottom = 891.0
+offset_left = 1245.0
+offset_top = 859.0
+offset_right = 1322.0
+offset_bottom = 899.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "HAIR"
@@ -210,10 +329,10 @@ text = "[hairc]"
 
 [node name="WeightLabel" type="Label" parent="UI/IDCard" unique_id=1668930202]
 layout_mode = 0
-offset_left = 1166.0
-offset_top = 889.0
-offset_right = 1243.0
-offset_bottom = 929.0
+offset_left = 1246.0
+offset_top = 897.0
+offset_right = 1323.0
+offset_bottom = 937.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "WGT"
@@ -230,10 +349,10 @@ text = "[weight]"
 
 [node name="EyeLabel" type="Label" parent="UI/IDCard" unique_id=659478503]
 layout_mode = 0
-offset_left = 1344.0
-offset_top = 852.0
-offset_right = 1421.0
-offset_bottom = 892.0
+offset_left = 1424.0
+offset_top = 860.0
+offset_right = 1501.0
+offset_bottom = 900.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "EYE"

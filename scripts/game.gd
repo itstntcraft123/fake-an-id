@@ -54,7 +54,7 @@ func _generate_id() -> void:
 		"dd": Utils.random_dd(dob, iss, expiry),
 		"endorsements": Utils.random_end(license_class),
 		"restrictions": Utils.random_restr(license_class),
-		"issue": iss,
+		"issue": Utils.date_to_str(iss),
 		"address": Utils.random_address()
 	}
 	
@@ -68,6 +68,12 @@ func _generate_id() -> void:
 	$UI/IDCard/HairLabel/HairColor.text = id_data["hair"]
 	$UI/IDCard/WeightLabel/Weight.text = id_data["weight"]
 	$UI/IDCard/EyeLabel/EyeColor.text = id_data["eyes"]
+	$UI/IDCard/LicenseLabel/LicenseNo.text = id_data["license_no"]
+	$UI/IDCard/DDLabel/DD.text = id_data["dd"]
+	$UI/IDCard/EndorsementsLabel/Endorcements.text = id_data["endorsements"]
+	$UI/IDCard/RestrictionsLabel/Restrictions.text = id_data["restrictions"]
+	$UI/IDCard/IssueLabel/Issues.text = id_data["issue"]
+	$UI/IDCard/AddressLabel/Address.text = id_data["address"]
 
 func _process(_delta: float) -> void:
 	if not study_timer.is_stopped():
