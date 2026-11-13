@@ -99,7 +99,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "[LN]"
 
-[node name="DoBLabel" type="Label" parent="UI/IDCard" unique_id=319141769]
+[node name="DobLabel" type="Label" parent="UI/IDCard" unique_id=319141769]
 layout_mode = 0
 offset_left = 749.0
 offset_top = 582.0
@@ -109,7 +109,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "DOB"
 
-[node name="DoB" type="Label" parent="UI/IDCard/DoBLabel" unique_id=2052988321]
+[node name="Dob" type="Label" parent="UI/IDCard/DobLabel" unique_id=2052988321]
 layout_mode = 0
 offset_left = 88.0
 offset_top = -8.0
@@ -119,7 +119,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "[DoB]"
 
-[node name="ExpireDateLabel" type="Label" parent="UI/IDCard" unique_id=1213400034]
+[node name="ExpDateLabel" type="Label" parent="UI/IDCard" unique_id=1213400034]
 layout_mode = 0
 offset_left = 751.0
 offset_top = 628.0
@@ -129,7 +129,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "EXP"
 
-[node name="ExpDate" type="Label" parent="UI/IDCard/ExpireDateLabel" unique_id=643385181]
+[node name="ExpDate" type="Label" parent="UI/IDCard/ExpDateLabel" unique_id=643385181]
 layout_mode = 0
 offset_left = 85.0
 offset_top = -6.0
@@ -139,7 +139,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "[expDate]"
 
-[node name="DDLabel" type="Label" parent="UI/IDCard" unique_id=676266183]
+[node name="DdLabel" type="Label" parent="UI/IDCard" unique_id=676266183]
 layout_mode = 0
 offset_left = 1129.0
 offset_top = 573.0
@@ -149,7 +149,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "DD"
 
-[node name="DD" type="Label" parent="UI/IDCard/DDLabel" unique_id=2147450604]
+[node name="Dd" type="Label" parent="UI/IDCard/DdLabel" unique_id=2147450604]
 layout_mode = 0
 offset_left = 63.0
 offset_top = -3.0
@@ -178,7 +178,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 text = "[address]"
 
-[node name="LicenseLabel" type="Label" parent="UI/IDCard" unique_id=1244743100]
+[node name="LicenseNoLabel" type="Label" parent="UI/IDCard" unique_id=1244743100]
 layout_mode = 0
 offset_left = 1130.0
 offset_top = 405.0
@@ -186,9 +186,9 @@ offset_right = 1315.0
 offset_bottom = 458.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "LISCENSE"
+text = "LICENSE"
 
-[node name="LicenseNo" type="Label" parent="UI/IDCard/LicenseLabel" unique_id=954225392]
+[node name="LicenseNo" type="Label" parent="UI/IDCard/LicenseNoLabel" unique_id=954225392]
 layout_mode = 0
 offset_left = 190.0
 offset_top = -14.0
@@ -196,7 +196,7 @@ offset_right = 466.0
 offset_bottom = 65.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 55
-text = "[liscense]"
+text = "[license]"
 
 [node name="EndorsementsLabel" type="Label" parent="UI/IDCard" unique_id=105807167]
 layout_mode = 0
@@ -208,7 +208,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "ENDORSEMENTS"
 
-[node name="Endorcements" type="Label" parent="UI/IDCard/EndorsementsLabel" unique_id=142407552]
+[node name="Endorsements" type="Label" parent="UI/IDCard/EndorsementsLabel" unique_id=142407552]
 layout_mode = 0
 offset_left = 322.0
 offset_top = -15.0
@@ -216,7 +216,7 @@ offset_right = 719.0
 offset_bottom = 64.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 55
-text = "[endorcement]"
+text = "[endorsement]"
 
 [node name="RestrictionsLabel" type="Label" parent="UI/IDCard" unique_id=1328342094]
 layout_mode = 0
@@ -238,7 +238,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 55
 text = "[restri.]"
 
-[node name="IssueLabel" type="Label" parent="UI/IDCard" unique_id=561446141]
+[node name="IssueDateLabel" type="Label" parent="UI/IDCard" unique_id=561446141]
 layout_mode = 0
 offset_left = 751.0
 offset_top = 674.0
@@ -248,7 +248,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "ISS"
 
-[node name="Issues" type="Label" parent="UI/IDCard/IssueLabel" unique_id=913208823]
+[node name="IssueDate" type="Label" parent="UI/IDCard/IssueDateLabel" unique_id=913208823]
 layout_mode = 0
 offset_left = 84.0
 offset_top = -6.0
@@ -308,7 +308,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
 text = "[hgt]"
 
-[node name="HairLabel" type="Label" parent="UI/IDCard" unique_id=616471486]
+[node name="HairColorLabel" type="Label" parent="UI/IDCard" unique_id=616471486]
 layout_mode = 0
 offset_left = 1245.0
 offset_top = 859.0
@@ -318,7 +318,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "HAIR"
 
-[node name="HairColor" type="Label" parent="UI/IDCard/HairLabel" unique_id=447074001]
+[node name="HairColor" type="Label" parent="UI/IDCard/HairColorLabel" unique_id=447074001]
 layout_mode = 0
 offset_left = 74.0
 offset_top = -5.0
@@ -348,7 +348,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
 text = "[weight]"
 
-[node name="EyeLabel" type="Label" parent="UI/IDCard" unique_id=659478503]
+[node name="EyeColorLabel" type="Label" parent="UI/IDCard" unique_id=659478503]
 layout_mode = 0
 offset_left = 1424.0
 offset_top = 860.0
@@ -358,7 +358,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "EYE"
 
-[node name="EyeColor" type="Label" parent="UI/IDCard/EyeLabel" unique_id=691298928]
+[node name="EyeColor" type="Label" parent="UI/IDCard/EyeColorLabel" unique_id=691298928]
 layout_mode = 0
 offset_left = 55.0
 offset_top = -6.0

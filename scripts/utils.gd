@@ -187,6 +187,9 @@ func random_eye_color() -> String:
 	})
 
 # Helper functions
+func snake_to_pascal(string: String) -> String:
+	return string.capitalize().replace(" ", "")
+
 func date_to_str(date: Dictionary) -> String:
 	return str(date["month"]).pad_zeros(2) + "/" + str(date["day"]).pad_zeros(2) + "/" + str(date["year"]).pad_zeros(4)
 

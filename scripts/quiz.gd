@@ -84,7 +84,7 @@ func _refresh_debug() -> void:
 	if not is_node_ready():
 		return
 	debug_label.visible = show_answers and visible and current < questions.size()
-	if debug_label.visible: 
+	if debug_label.visible:
 		debug_label.text = "DEBUG answer: " + str(id_data[questions[current][0]])
 
 func _process(_delta: float) -> void:

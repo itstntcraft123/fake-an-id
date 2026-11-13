@@ -41,41 +41,27 @@ func _generate_id() -> void:
 	var license_class := Utils.random_class(age)
 	
 	id_data = {
-		"class": license_class, 
+		"drivers_class": license_class, 
 		"first_name": Utils.random_first_name(gender),
 		"last_name": Utils.random_last_name(), 
 		"dob": Utils.date_to_str(dob),
-		"exp": Utils.date_to_str(expiry),
+		"exp_date": Utils.date_to_str(expiry),
 		"sex": gender,
 		"height": Utils.random_height(),
 		"weight": Utils.random_weight(),
-		"eyes": Utils.random_eye_color(),
-		"hair": Utils.random_hair_color(),
-		# new values
+		"eye_color": Utils.random_eye_color(),
+		"hair_color": Utils.random_hair_color(),
 		"license_no": Utils.random_license_no(),
 		"dd": Utils.random_dd(dob, iss, expiry),
 		"endorsements": Utils.random_end(license_class),
 		"restrictions": Utils.random_restr(license_class),
-		"issue": Utils.date_to_str(iss),
+		"issue_date": Utils.date_to_str(iss),
 		"address": Utils.random_address()
 	}
 	
-	$UI/IDCard/DriversClassLabel/DriversClass.text = id_data["class"]
-	$UI/IDCard/FirstNameLabel/FirstName.text = id_data["first_name"]
-	$UI/IDCard/LastNameLabel/LastName.text = id_data["last_name"]
-	$UI/IDCard/DoBLabel/DoB.text = id_data["dob"]
-	$UI/IDCard/ExpireDateLabel/ExpDate.text = id_data["exp"]
-	$UI/IDCard/SexLabel/Sex.text = id_data["sex"]
-	$UI/IDCard/HeightLabel/Height.text = id_data["height"]
-	$UI/IDCard/HairLabel/HairColor.text = id_data["hair"]
-	$UI/IDCard/WeightLabel/Weight.text = id_data["weight"]
-	$UI/IDCard/EyeLabel/EyeColor.text = id_data["eyes"]
-	$UI/IDCard/LicenseLabel/LicenseNo.text = id_data["license_no"]
-	$UI/IDCard/DDLabel/DD.text = id_data["dd"]
-	$UI/IDCard/EndorsementsLabel/Endorcements.text = id_data["endorsements"]
-	$UI/IDCard/RestrictionsLabel/Restrictions.text = id_data["restrictions"]
-	$UI/IDCard/IssueLabel/Issues.text = id_data["issue"]
-	$UI/IDCard/AddressLabel/Address.text = id_data["address"]
+	for key in id_data:
+		print(Utils.snake_to_pascal(key))
+		get_node("UI/IDCard/" + Utils.snake_to_pascal(key) + "Label/" + Utils.snake_to_pascal(key)).text = id_data[key]
 
 func _process(_delta: float) -> void:
 	if not study_timer.is_stopped():
