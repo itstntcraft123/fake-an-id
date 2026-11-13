@@ -10,12 +10,12 @@ const question_bank := [
 	["first_name", "What is your first name?"],
 	["last_name", "What is your last name?"],
 	["dob", "What is your date of birth? (MM/DD/YYYY)"],
-	["exp", "What is the expiration date? (MM/DD/YYYY)"],
+	["exp_date", "What is the expiration date? (MM/DD/YYYY)"],
 	["sex", "What is your sex? (M/F/X)"],
 	["weight", "What is your weight? (lbs)"],
-	["hair", "What is your hair color? (e.g. BRN)"],
-	["eyes", "What is your eye color? (e.g. BRN)"],
-	["class", "What is your license class?"]
+	["hair_color", "What is your hair color? (e.g. BRN)"],
+	["eye_color", "What is your eye color? (e.g. BRN)"],
+	["drivers_class", "What is your license class?"]
 ]
 
 @onready var progress_label: Label = %ProgressLabel
