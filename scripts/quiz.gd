@@ -2,6 +2,7 @@ extends Control
 
 var show_answers := true
 @onready var debug_label: Label = $DebugAnswerLabel
+var clean_regex = RegEx.new()
 
 signal finished(passed: bool)
 
@@ -29,6 +30,7 @@ var current := 0
 var accepting := false
 
 func _ready() -> void:
+	clean_regex.compile("[^a-z0-9]")
 	answer_edit.text_submitted.connect(_on_submit)
 	submit_button.pressed.connect(func(): _on_submit(answer_edit.text))
 
@@ -50,19 +52,13 @@ func _show_question() -> void:
 	answer_edit.grab_focus()
 	accepting = true
 	
-	accepting = true
 	_refresh_debug()
 
-func _normalize(s: String) -> String:
-	var t := s.to_lower().replace("lb", "")
-	var out := ""
-	for c in t: 
-		if (c >= "a" and c <= "z") or (c >= "0" and c <= "9"):
-			out += c
-	return out
+func _normalize(string: String) -> String:
+	return clean_regex.sub(string.to_lower().replace("lb", ""), "", true)
 
 func _on_submit(text: String) -> void:
-	if not accepting: 
+	if not accepting or text == "":
 		return
 	accepting = false
 	var correct_answer := str(id_data[questions[current][0]])
