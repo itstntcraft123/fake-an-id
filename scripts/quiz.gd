@@ -107,7 +107,6 @@ func text_is_valid(text: String, question: String) -> bool:
 		_ when question.ends_with("color"):
 			return len(text) == 3
 		"drivers_class":
-			print(text)
 			return len(text) == 1
 		_:
 			@warning_ignore("assert_always_true")
