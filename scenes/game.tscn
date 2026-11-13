@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://0s4iebvuhv6a" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://pcbnymjs5gst" path="res://scenes/escape_screen.tscn" id="2_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://py73ljae74sf" path="res://sprites/id-placeholder.png" id="3_lnu2h"]
 [ext_resource type="Theme" uid="uid://ckm8ormicu8rl" path="res://theme.tres" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://dcq22rey7qc3h" path="res://sprites/game-id.png" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://1t2iqav31vyb" path="res://sprites/facePlaceholder.png" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bo17s2krb6vwg" path="res://scenes/quiz.tscn" id="6_p57ef"]
 
@@ -27,7 +27,7 @@ offset_left = 117.0
 offset_top = 4.0
 offset_right = 1838.6
 offset_bottom = 1080.0
-texture = ExtResource("3_lnu2h")
+texture = ExtResource("4_p57ef")
 
 [node name="IDImage" type="TextureRect" parent="UI/IDCard" unique_id=530004295]
 texture_filter = 1
