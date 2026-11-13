@@ -1,7 +1,7 @@
 extends Node2D
 
 const max_lives := 3
-const study_time := 0.0
+const study_time := 20.0
 
 @export var escape_screen: PackedScene
 @export var debug_show_answers := true
@@ -14,6 +14,7 @@ var score := 0 # for now just # of ids passed
 @onready var quiz: Control = $UI/Theme/Quiz
 @onready var study_timer: Timer = $StudyTimer
 @onready var timer_label: Label = $UI/Theme/TimerLabel
+@onready var timer_anim: AnimatedSprite2D = $UI/TimerAnim
 @onready var lives_label: Label = $UI/Theme/LivesLabel
 @onready var score_label: Label = $UI/Theme/ScoreLabel
 @onready var skip_button: Button = $UI/Theme/SkipButton
@@ -33,6 +34,9 @@ func _start_round() -> void:
 	timer_label.show()
 	_update_hud()
 	study_timer.start(maxf(8.0, study_time - score))
+	timer_anim.show()
+	timer_anim.stop()
+	timer_anim.frame = 0
 
 func _generate_id() -> void: 
 	var gender := Utils.random_gender()
@@ -65,8 +69,14 @@ func _generate_id() -> void:
 		get_node("UI/Theme/IDCard/" + Utils.snake_to_pascal(key) + "Label/" + Utils.snake_to_pascal(key)).text = id_data[key]
 
 func _process(_delta: float) -> void:
-	if not study_timer.is_stopped():
-		timer_label.text = str(ceili(study_timer.time_left))
+	if study_timer.is_stopped():
+		return
+	timer_label.text = str(ceili(study_timer.time_left))
+	var progress := 1.0 - study_timer.time_left / study_timer.wait_time
+	var frame_count := timer_anim.sprite_frames.get_frame_count(timer_anim.animation)
+	timer_anim.frame = mini(int(progress * frame_count), frame_count - 1)
+	
+	print(progress, " ", frame_count, " ", timer_anim.frame) 
 
 func _on_study_over() -> void:
 	skip_button.hide()
