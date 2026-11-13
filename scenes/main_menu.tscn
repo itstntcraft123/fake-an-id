@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://ckm8ormicu8rl" path="res://theme.tres" id="1_0fbet"]
 [ext_resource type="Script" uid="uid://blqkatqoktqes" path="res://scripts/main_menu.gd" id="2_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://bmdsk1kuk34xi" path="res://scenes/select_menu.tscn" id="2_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://bpxr1xdodvt5y" path="res://sprites/home-sceen-id-draft.png" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://xw0efeo8m33w" path="res://sprites/home-sceen-id.png" id="3_oa1go"]
 [ext_resource type="Texture2D" uid="uid://ctyepyutkmtva" path="res://sprites/play-button.png" id="5_8ln24"]
 [ext_resource type="Texture2D" uid="uid://dwpaimymi3n3f" path="res://sprites/options-placeholder.png" id="6_oa1go"]
 [ext_resource type="Texture2D" uid="uid://dil7n7jcxyn80" path="res://sprites/quit-placeholder.png" id="7_tbmy8"]
@@ -54,7 +54,7 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("3_wu84c")
+texture = ExtResource("3_oa1go")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2001314059]
 layout_mode = 1
