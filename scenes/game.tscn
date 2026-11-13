@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dcq22rey7qc3h" path="res://sprites/game-id.png" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://1t2iqav31vyb" path="res://sprites/facePlaceholder.png" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bo17s2krb6vwg" path="res://scenes/quiz.tscn" id="6_p57ef"]
+[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="7_u5sy4"]
 
 [node name="Game" type="Node2D" unique_id=478941946]
 script = ExtResource("1_uwrxv")
@@ -385,10 +386,13 @@ offset_bottom = 252.0
 text = "LivesLabel"
 
 [node name="ScoreLabel" type="Label" parent="UI" unique_id=1242551628]
-offset_left = 1348.0
-offset_top = 200.0
-offset_right = 1433.0
-offset_bottom = 224.0
-text = "ScoreLabel"
+offset_left = 1320.0
+offset_top = 148.0
+offset_right = 1506.0
+offset_bottom = 212.0
+theme_override_colors/font_color = Color(0.50980395, 0.19215687, 0.87058824, 1)
+theme_override_fonts/font = ExtResource("7_u5sy4")
+theme_override_font_sizes/font_size = 48
+text = "Score: 0"
 
 [node name="StudyTimer" type="Timer" parent="." unique_id=146617480]
