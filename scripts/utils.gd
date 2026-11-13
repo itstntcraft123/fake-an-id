@@ -44,22 +44,14 @@ func random_dob(age: int) -> Dictionary:
 	min_date["year"] -= 1
 	return Time.get_datetime_dict_from_unix_time(randi_range(Time.get_unix_time_from_datetime_dict(min_date), Time.get_unix_time_from_datetime_dict(max_date)))
 
-func days_in_month(year: int, month: int) -> int:
-	match month:
-		2: 
-			var leap := (year % 4 == 0 and year % 100!= 0) or year % 400 == 0
-			return 29 if leap else 28
-		4, 6, 9, 11: 
-			return 30
-		_:
-			return 31
-
 func random_exp(dob: Dictionary) -> Dictionary: # expiry date
-	# licenses can be expired
-	var expired: bool = randf() < 0.2
+	var expired: bool = randf() < 0.02 # licenses can be expired (rare)
+	var not_eq_dob: bool = randf() < 0.05 # licenses can be not on your dob
 	var date: Dictionary = dob.duplicate()
 	var possible_exps := get_possible_exps(dob, expired)
 	date["year"] = possible_exps.pick_random()
+	if not_eq_dob:
+		return random_date_in_a_year(date["year"])
 	return date
 
 func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
@@ -77,6 +69,7 @@ func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
 				return [i]
 		return [0]
 
+# license issue date
 func random_iss(dob: Dictionary, expiry: Dictionary) -> Dictionary: # issuing date, 5 years before expiry
 	var date: Dictionary = expiry.duplicate()
 	var days_before_exp := randi_range(-10, 30) # negative number means they forgot to renew in time
@@ -92,8 +85,9 @@ func random_first_iss(dob: Dictionary, iss: Dictionary) -> Dictionary: # first i
 	min_date["year"] += 16
 	var max_date: Dictionary = iss.duplicate()
 	max_date["year"] -= 1
-	return rand_date(min_date, max_date)
+	return random_date(min_date, max_date)
 
+# document discriminator
 func random_dd(dob: Dictionary, iss: Dictionary, expiry: Dictionary) -> String:
 	return date_to_str(random_first_iss(dob, iss)) + random_num(3) + random_string(3) + "/" + random_string(2) + str(expiry["year"]).right(2)
 
@@ -210,8 +204,18 @@ func get_date() -> Dictionary:
 func date_is_larger(date1: Dictionary, date2: Dictionary) -> bool:
 	return Time.get_unix_time_from_datetime_dict(date1) > Time.get_unix_time_from_datetime_dict(date2)
 
-func rand_date(min_dict: Dictionary, max_dict: Dictionary) -> Dictionary:
+func random_date(min_dict: Dictionary, max_dict: Dictionary) -> Dictionary:
 	return Time.get_datetime_dict_from_unix_time(randi_range(Time.get_unix_time_from_datetime_dict(min_dict), Time.get_unix_time_from_datetime_dict(max_dict)))
+
+func random_date_in_a_year(year: int) -> Dictionary:
+	var min_date = {
+		"year": year,
+	}
+	# get last day, hour, minute in the year by removing 1 second from the unix time of next year
+	var max_date = Time.get_datetime_dict_from_unix_time(Time.get_unix_time_from_datetime_dict({
+		"year": year + 1,
+	}) - 1)
+	return random_date(min_date, max_date)
 
 func weighted_random_num(minimum: float, maximum: float, mean: float, deviation: float) -> float:
 	return clampf(rng.randfn(mean, deviation), minimum, maximum)
