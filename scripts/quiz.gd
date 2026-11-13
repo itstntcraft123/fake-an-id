@@ -1,5 +1,8 @@
 extends Control
 
+var show_answers := true
+@onready var debug_label: Label = $DebugAnswerLabel
+
 signal finished(passed: bool)
 
 const question_bank := [
@@ -46,6 +49,9 @@ func _show_question() -> void:
 	submit_button.disabled = false
 	answer_edit.grab_focus()
 	accepting = true
+	
+	accepting = true
+	_refresh_debug()
 
 func _normalize(s: String) -> String:
 	var t := s.to_lower().replace("lb", "")
@@ -73,6 +79,17 @@ func _on_submit(text: String) -> void:
 		feedback_label.text = "Wrong answer buddy. It was: " + correct_answer
 		await get_tree().create_timer(1.5).timeout
 		finished.emit(false)
+
+func set_show_answers(on:bool) -> void:
+	show_answers = on
+	_refresh_debug()
+	
+func _refresh_debug() -> void:
+	if not is_node_ready():
+		return
+	debug_label.visible = show_answers and visible and current < questions.size()
+	if debug_label.visible: 
+		debug_label.text = "DEBUG answer: " + str(id_data[questions[current][0]])
 
 func _process(_delta: float) -> void:
 	pass

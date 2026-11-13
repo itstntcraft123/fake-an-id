@@ -1,9 +1,10 @@
 extends Node2D
 
 const max_lives := 3
-const study_time := 20.0
+const study_time := 5.0
 
 @export var escape_screen: PackedScene
+@export var debug_show_answers := true
 
 var id_data := {}
 var lives = max_lives
@@ -20,6 +21,7 @@ func _ready() -> void:
 	study_timer.one_shot = true
 	study_timer.timeout.connect(_on_study_over)
 	quiz.finished.connect(_on_quiz_finished)
+	quiz.set_show_answers(debug_show_answers)
 	_start_round()
 
 func _start_round() -> void:
