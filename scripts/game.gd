@@ -2,9 +2,11 @@ extends Node2D
 
 const max_lives := 3
 const study_time := 20.0
+const clock_fps := 4.0
 
 @export var escape_screen: PackedScene
 @export var debug_show_answers := true
+@export var debug_show_timer_label := false
 
 var id_data := {}
 var lives = max_lives
@@ -31,12 +33,12 @@ func _start_round() -> void:
 	quiz.hide()
 	skip_button.show()
 	id_card.show()
-	timer_label.show()
+	timer_label.visible = debug_show_timer_label
 	_update_hud()
 	study_timer.start(maxf(8.0, study_time - score))
 	timer_anim.show()
 	timer_anim.stop()
-	timer_anim.frame = 0
+	_set_clock_frame()
 
 func _generate_id() -> void: 
 	var gender := Utils.random_gender()
@@ -71,17 +73,22 @@ func _generate_id() -> void:
 func _process(_delta: float) -> void:
 	if study_timer.is_stopped():
 		return
-	timer_label.text = str(ceili(study_timer.time_left))
-	var progress := 1.0 - study_timer.time_left / study_timer.wait_time
+	if debug_show_timer_label:
+		timer_label.text = str(ceili(study_timer.time_left))
+	_set_clock_frame()
+
+func _set_clock_frame() -> void:
 	var frame_count := timer_anim.sprite_frames.get_frame_count(timer_anim.animation)
-	timer_anim.frame = mini(int(progress * frame_count), frame_count - 1)
-	
-	print(progress, " ", frame_count, " ", timer_anim.frame) 
+	var sheet_duration := frame_count / clock_fps
+	var elapsed_on_sheet := sheet_duration - study_timer.time_left
+	timer_anim.frame = clampi(int(elapsed_on_sheet * clock_fps), 0, frame_count - 1)
+	# print(progress, " ", frame_count, " ", timer_anim.frame) 
 
 func _on_study_over() -> void:
 	skip_button.hide()
 	id_card.hide()
 	timer_label.hide()
+	timer_anim.hide()
 	quiz.show()
 	quiz.start(id_data, 2 + score)
 	
@@ -111,5 +118,5 @@ func _input(event: InputEvent) -> void:
 		get_tree().paused = true
 
 func _on_skip_button_pressed() -> void:
-	_on_study_over()
 	study_timer.stop()
+	_on_study_over()

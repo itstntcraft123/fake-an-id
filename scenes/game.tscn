@@ -621,9 +621,9 @@ texture = ExtResource("5_iywne")
 [node name="DriversClassLabel" type="Label" parent="UI/Theme/IDCard" unique_id=1720002885]
 layout_mode = 0
 offset_left = 1128.0
-offset_top = 357.0
+offset_top = 413.0
 offset_right = 1356.0
-offset_bottom = 410.0
+offset_bottom = 466.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "CLASS"
@@ -721,9 +721,9 @@ text = "[expDate]"
 [node name="DdLabel" type="Label" parent="UI/Theme/IDCard" unique_id=676266183]
 layout_mode = 0
 offset_left = 1129.0
-offset_top = 573.0
+offset_top = 674.0
 offset_right = 1314.0
-offset_bottom = 626.0
+offset_bottom = 727.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "DD"
@@ -759,19 +759,19 @@ text = "[address]"
 
 [node name="LicenseNoLabel" type="Label" parent="UI/Theme/IDCard" unique_id=1244743100]
 layout_mode = 0
-offset_left = 1130.0
-offset_top = 405.0
-offset_right = 1315.0
-offset_bottom = 458.0
+offset_left = 1128.0
+offset_top = 514.0
+offset_right = 1313.0
+offset_bottom = 567.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "LICENSE"
 
 [node name="LicenseNo" type="Label" parent="UI/Theme/IDCard/LicenseNoLabel" unique_id=954225392]
 layout_mode = 0
-offset_left = 190.0
+offset_left = 163.0
 offset_top = -14.0
-offset_right = 466.0
+offset_right = 439.0
 offset_bottom = 65.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 55
@@ -780,9 +780,9 @@ text = "[license]"
 [node name="EndorsementsLabel" type="Label" parent="UI/Theme/IDCard" unique_id=105807167]
 layout_mode = 0
 offset_left = 1129.0
-offset_top = 512.0
+offset_top = 613.0
 offset_right = 1441.0
-offset_bottom = 565.0
+offset_bottom = 666.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "ENDORSEMENTS"
@@ -800,9 +800,9 @@ text = "[endorsement]"
 [node name="RestrictionsLabel" type="Label" parent="UI/Theme/IDCard" unique_id=1328342094]
 layout_mode = 0
 offset_left = 1129.0
-offset_top = 465.0
+offset_top = 569.0
 offset_right = 1441.0
-offset_bottom = 518.0
+offset_bottom = 622.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "RESTRICTIONS"
@@ -831,7 +831,7 @@ text = "ISS"
 layout_mode = 0
 offset_left = 84.0
 offset_top = -6.0
-offset_right = 481.0
+offset_right = 359.0
 offset_bottom = 73.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
@@ -953,44 +953,46 @@ layout_mode = 1
 
 [node name="LivesLabel" type="Label" parent="UI/Theme" unique_id=210568411]
 layout_mode = 0
-offset_left = 1347.0
-offset_top = 229.0
-offset_right = 1428.0
-offset_bottom = 252.0
+offset_left = 419.0
+offset_top = 875.0
+offset_right = 602.0
+offset_bottom = 923.0
 theme_override_font_sizes/font_size = 36
 text = "LivesLabel"
 
 [node name="TimerLabel" type="Label" parent="UI/Theme" unique_id=1752270649]
 layout_mode = 0
-offset_left = 1345.0
-offset_top = 259.0
-offset_right = 1538.0
-offset_bottom = 307.0
+offset_left = 1387.0
+offset_top = 181.0
+offset_right = 1580.0
+offset_bottom = 229.0
 theme_override_font_sizes/font_size = 36
 text = "TimerLabel"
 
 [node name="ScoreLabel" type="Label" parent="UI/Theme" unique_id=1242551628]
 layout_mode = 0
-offset_left = 1320.0
-offset_top = 148.0
-offset_right = 1506.0
-offset_bottom = 212.0
+offset_left = 752.0
+offset_top = 822.0
+offset_right = 1062.0
+offset_bottom = 927.0
 theme_override_colors/font_color = Color(0.50980395, 0.19215687, 0.87058824, 1)
 theme_override_fonts/font = ExtResource("7_u5sy4")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 80
 text = "Score: 0"
 
 [node name="SkipButton" type="Button" parent="UI/Theme" unique_id=1717449017]
 layout_mode = 0
-offset_left = 626.0
-offset_top = 775.0
-offset_right = 1219.0
-offset_bottom = 991.0
-text = "skip"
+offset_left = 1380.0
+offset_top = 229.0
+offset_right = 1488.0
+offset_bottom = 301.0
+theme_override_colors/font_color = Color(0.9085198, 0.55237514, 0.2488038, 1)
+theme_override_font_sizes/font_size = 48
+text = "SKIP"
 
 [node name="TimerAnim" type="AnimatedSprite2D" parent="UI" unique_id=1064252235]
 texture_filter = 1
-position = Vector2(1598.0001, 351)
+position = Vector2(1596.0001, 343)
 scale = Vector2(9.5, 9.500001)
 sprite_frames = SubResource("SpriteFrames_63sl8")
 
