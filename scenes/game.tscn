@@ -953,10 +953,10 @@ layout_mode = 1
 
 [node name="LivesLabel" type="Label" parent="UI/Theme" unique_id=210568411]
 layout_mode = 0
-offset_left = 419.0
-offset_top = 875.0
-offset_right = 602.0
-offset_bottom = 923.0
+offset_left = 407.0
+offset_top = 872.0
+offset_right = 590.0
+offset_bottom = 920.0
 theme_override_font_sizes/font_size = 36
 text = "LivesLabel"
 
@@ -971,10 +971,10 @@ text = "TimerLabel"
 
 [node name="ScoreLabel" type="Label" parent="UI/Theme" unique_id=1242551628]
 layout_mode = 0
-offset_left = 752.0
-offset_top = 822.0
-offset_right = 1062.0
-offset_bottom = 927.0
+offset_left = 749.0
+offset_top = 841.0
+offset_right = 1059.0
+offset_bottom = 946.0
 theme_override_colors/font_color = Color(0.50980395, 0.19215687, 0.87058824, 1)
 theme_override_fonts/font = ExtResource("7_u5sy4")
 theme_override_font_sizes/font_size = 80
@@ -992,7 +992,7 @@ text = "SKIP"
 
 [node name="TimerAnim" type="AnimatedSprite2D" parent="UI" unique_id=1064252235]
 texture_filter = 1
-position = Vector2(1596.0001, 343)
+position = Vector2(1599, 346.00003)
 scale = Vector2(9.5, 9.500001)
 sprite_frames = SubResource("SpriteFrames_63sl8")
 

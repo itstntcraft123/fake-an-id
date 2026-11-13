@@ -4,6 +4,15 @@ const max_lives := 3
 const study_time := 20.0
 const clock_fps := 4.0
 
+const hud_study_pos := {
+	"lives": Vector2(418, 874),
+	"score": Vector2(749, 841),
+}
+const hud_quiz_pos := {
+	"lives": Vector2(1395, 200),
+	"score": Vector2(1387, 100),
+}
+
 @export var escape_screen: PackedScene
 @export var debug_show_answers := true
 @export var debug_show_timer_label := false
@@ -39,6 +48,7 @@ func _start_round() -> void:
 	timer_anim.show()
 	timer_anim.stop()
 	_set_clock_frame()
+	_set_hud_position(false)
 
 func _generate_id() -> void: 
 	var gender := Utils.random_gender()
@@ -70,6 +80,11 @@ func _generate_id() -> void:
 	for key in id_data:
 		get_node("UI/Theme/IDCard/" + Utils.snake_to_pascal(key) + "Label/" + Utils.snake_to_pascal(key)).text = id_data[key]
 
+func _set_hud_position(in_quiz: bool) -> void:
+	var p := hud_quiz_pos if in_quiz else hud_study_pos
+	lives_label.position = p["lives"]
+	score_label.position = p["score"]
+
 func _process(_delta: float) -> void:
 	if study_timer.is_stopped():
 		return
@@ -90,6 +105,7 @@ func _on_study_over() -> void:
 	timer_label.hide()
 	timer_anim.hide()
 	quiz.show()
+	_set_hud_position(true)
 	quiz.start(id_data, 2 + score)
 	
 func _on_quiz_finished(passed: bool) -> void:
