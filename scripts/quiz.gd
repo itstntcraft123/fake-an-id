@@ -4,6 +4,16 @@ var show_answers := true
 @onready var debug_label: Label = $DebugAnswerLabel
 var clean_regex = RegEx.new()
 
+
+@export var normal_time := 10.0
+@export var fast_time := 5.0
+@export var fast_score_threshold := 10
+
+@onready var answer_timer: Timer = $AnswerTimer
+@onready var time_left_label: ProgressBar = %TimeLeftBar
+
+var score := 0
+
 signal finished(passed: bool)
 
 const question_bank := [
@@ -33,9 +43,13 @@ func _ready() -> void:
 	clean_regex.compile("[^a-z0-9/]")
 	answer_edit.text_submitted.connect(_on_submit)
 	submit_button.pressed.connect(func(): _on_submit(answer_edit.text))
+	
+	answer_timer.one_shot = true
+	answer_timer.timeout.connect(_on_time_up)
 
-func start(data: Dictionary, count: int) -> void:
+func start(data: Dictionary, count: int, current_score: int = 0) -> void:
 	id_data = data
+	score = current_score
 	var pool := question_bank.duplicate()
 	pool.shuffle()
 	questions = pool.slice(0, mini(count, pool.size()))
@@ -51,21 +65,26 @@ func _show_question() -> void:
 	submit_button.disabled = false
 	answer_edit.grab_focus()
 	accepting = true
-	
+	answer_timer.start(fast_time if score >= fast_score_threshold else normal_time)
+	time_left_label.max_value = answer_timer.wait_time
 	_refresh_debug()
 
 func _normalize(string: String) -> String:
 	return clean_regex.sub(string.to_lower().replace("lbs", "").replace("lb", ""), "", true)
 
 func _on_submit(text: String) -> void:
-	if not accepting:
-		return
-	if text == "" or !text_is_valid(_normalize(text), questions[current][0]):
-		feedback_label.text = "Check your answer format!"
-		return
-	accepting = false
 	var correct_answer := str(id_data[questions[current][0]])
-	
+	if _normalize(text) == _normalize(correct_answer):
+		accepting = false
+		answer_timer.stop()
+		current += 1
+		if current >= questions.size():
+			finished.emit(true)
+		else: 
+			_show_question()
+	else:
+		_fail("Wrong answer buddy. It was: ")
+
 	if _normalize(text) == _normalize(correct_answer):
 		current += 1
 		if current >= questions.size():
@@ -78,6 +97,20 @@ func _on_submit(text: String) -> void:
 		feedback_label.text = "Wrong answer buddy. It was: " + correct_answer
 		await get_tree().create_timer(1.5).timeout
 		finished.emit(false)
+
+func _fail(message: String) -> void:
+	accepting = false
+	answer_timer.stop()
+	answer_edit.editable = false
+	submit_button.disabled = true
+	var correct_answer := str(id_data[questions[current][0]])
+	feedback_label.text = message + correct_answer
+	await get_tree().create_timer(1.5).timeout
+	finished.emit(false)
+
+func _on_time_up() -> void:
+	if accepting:
+		_fail("Time is up! It was: ")
 
 func set_show_answers(on: bool) -> void:
 	show_answers = on
@@ -114,4 +147,5 @@ func text_is_valid(text: String, question: String) -> bool:
 			return false
 
 func _process(_delta: float) -> void:
-	pass
+	if time_left_label and not answer_timer.is_stopped():
+		time_left_label.value = answer_timer.time_left

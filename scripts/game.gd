@@ -106,7 +106,7 @@ func _on_study_over() -> void:
 	timer_anim.hide()
 	quiz.show()
 	_set_hud_position(true)
-	quiz.start(id_data, 2 + score)
+	quiz.start(id_data, 2 + score, score)
 	
 func _on_quiz_finished(passed: bool) -> void:
 	if passed: 
