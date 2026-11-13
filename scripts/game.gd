@@ -1,7 +1,7 @@
 extends Node2D
 
 const max_lives := 3
-const study_time := 5.0
+const study_time := 0.0
 
 @export var escape_screen: PackedScene
 @export var debug_show_answers := true
