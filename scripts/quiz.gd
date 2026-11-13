@@ -30,7 +30,7 @@ var current := 0
 var accepting := false
 
 func _ready() -> void:
-	clean_regex.compile("[^a-z0-9]")
+	clean_regex.compile("[^a-z0-9/]")
 	answer_edit.text_submitted.connect(_on_submit)
 	submit_button.pressed.connect(func(): _on_submit(answer_edit.text))
 
@@ -55,10 +55,10 @@ func _show_question() -> void:
 	_refresh_debug()
 
 func _normalize(string: String) -> String:
-	return clean_regex.sub(string.to_lower().replace("lb", ""), "", true)
+	return clean_regex.sub(string.to_lower().replace("lbs", "").replace("lb", ""), "", true)
 
 func _on_submit(text: String) -> void:
-	if not accepting or text == "":
+	if not accepting or text == "" or !text_is_valid(_normalize(text), questions[current][0]):
 		return
 	accepting = false
 	var correct_answer := str(id_data[questions[current][0]])
@@ -76,7 +76,7 @@ func _on_submit(text: String) -> void:
 		await get_tree().create_timer(1.5).timeout
 		finished.emit(false)
 
-func set_show_answers(on:bool) -> void:
+func set_show_answers(on: bool) -> void:
 	show_answers = on
 	_refresh_debug()
 	
@@ -86,6 +86,30 @@ func _refresh_debug() -> void:
 	debug_label.visible = show_answers and visible and current < questions.size()
 	if debug_label.visible:
 		debug_label.text = "DEBUG answer: " + str(id_data[questions[current][0]])
+
+# returns if an answer is valid. does not check extensively to allow mistakes while stopping typos.
+func text_is_valid(text: String, question: String) -> bool:
+	match question:
+		_ when question.ends_with("name"):
+			return not " " in text
+		_ when question.ends_with("date") or question == "dob": # MM/DD/YYYY
+			var split := text.split_floats("/", true)
+			if len(split) != 3:
+				return false
+			return split[0] > 0 and split[0] < 13 and split[1] > 0 and split[1] < 32
+		"sex":
+			return text == "m" or text == "f" or text == "x"
+		"weight":
+			return text.is_valid_int()
+		_ when question.ends_with("color"):
+			return len(text) == 3
+		"drivers_class":
+			print(text)
+			return len(text) == 1
+		_:
+			@warning_ignore("assert_always_true")
+			assert(true, "invalid question passed into text_is_valid")
+			return false
 
 func _process(_delta: float) -> void:
 	pass

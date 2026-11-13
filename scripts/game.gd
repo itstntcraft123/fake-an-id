@@ -62,7 +62,6 @@ func _generate_id() -> void:
 	}
 	
 	for key in id_data:
-		print(Utils.snake_to_pascal(key))
 		get_node("UI/Theme/IDCard/" + Utils.snake_to_pascal(key) + "Label/" + Utils.snake_to_pascal(key)).text = id_data[key]
 
 func _process(_delta: float) -> void:
