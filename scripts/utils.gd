@@ -10,7 +10,7 @@ func random_license_no() -> String:
 	return random_string(1) + random_num(7)
 
 func random_first_name(gender: String) -> String:
-	# data from archive.ics.uci.edu/dataset/591/gender+by+name
+	# data from archive.ics.uci.edu/dataset/591/gender+by+name (CC BY 4.0)
 	var data: Dictionary = read_data("first_names.json")
 	
 	match gender: 
