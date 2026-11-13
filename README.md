@@ -10,7 +10,7 @@ You can check out and play this project at [exported godot link here], or you ca
 To develop on this project, `git clone` this repo and open it in the Godot editor.
 
 ## Data
-Datasets used by this project for random generation are in data/, and you can find credits in [data/CREDITS.md](data/CREDITS.md). If there is no link in a function, the data used does not reflect real data.
+Datasets used by this project for random generation are in [data/](data/), and you can find credits in [data/CREDITS.md](data/CREDITS.md). You can also see what source a function uses in [scripts/utils.gd](scripts/utils.gd). If there is no link in a function, the data used in that function does not reflect real data.
 
 ## Tech Stack
 Fake An ID was made in Godot 4. Its animations and pixel art were made in LibreSprite.
