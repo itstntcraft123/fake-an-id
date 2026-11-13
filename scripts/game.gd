@@ -10,12 +10,13 @@ var id_data := {}
 var lives = max_lives
 var score := 0 # for now just # of ids passed
 
-@onready var id_card: Control = $UI/IDCard
-@onready var quiz: Control = $UI/Quiz
+@onready var id_card: Control = $UI/Theme/IDCard
+@onready var quiz: Control = $UI/Theme/Quiz
 @onready var study_timer: Timer = $StudyTimer
-@onready var timer_label: Label = $UI/TimerLabel
-@onready var lives_label: Label = $UI/LivesLabel
-@onready var score_label: Label = $UI/ScoreLabel
+@onready var timer_label: Label = $UI/Theme/TimerLabel
+@onready var lives_label: Label = $UI/Theme/LivesLabel
+@onready var score_label: Label = $UI/Theme/ScoreLabel
+@onready var skip_button: Button = $UI/Theme/SkipButton
 
 func _ready() -> void:
 	study_timer.one_shot = true
@@ -27,6 +28,7 @@ func _ready() -> void:
 func _start_round() -> void:
 	_generate_id()
 	quiz.hide()
+	skip_button.show()
 	id_card.show()
 	timer_label.show()
 	_update_hud()
@@ -61,13 +63,14 @@ func _generate_id() -> void:
 	
 	for key in id_data:
 		print(Utils.snake_to_pascal(key))
-		get_node("UI/IDCard/" + Utils.snake_to_pascal(key) + "Label/" + Utils.snake_to_pascal(key)).text = id_data[key]
+		get_node("UI/Theme/IDCard/" + Utils.snake_to_pascal(key) + "Label/" + Utils.snake_to_pascal(key)).text = id_data[key]
 
 func _process(_delta: float) -> void:
 	if not study_timer.is_stopped():
 		timer_label.text = str(ceili(study_timer.time_left))
 
 func _on_study_over() -> void:
+	skip_button.hide()
 	id_card.hide()
 	timer_label.hide()
 	quiz.show()
@@ -93,7 +96,11 @@ func _update_hud() -> void:
 	lives_label.text = "Lives: %d" % lives
 	score_label.text = "Score: %d" % score
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_close_dialog") and not has_node("EscapeScreen"):
 		$UI.add_child(escape_screen.instantiate())
 		get_tree().paused = true
+
+func _on_skip_button_pressed() -> void:
+	_on_study_over()
+	study_timer.stop()
