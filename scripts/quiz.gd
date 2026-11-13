@@ -58,7 +58,10 @@ func _normalize(string: String) -> String:
 	return clean_regex.sub(string.to_lower().replace("lbs", "").replace("lb", ""), "", true)
 
 func _on_submit(text: String) -> void:
-	if not accepting or text == "" or !text_is_valid(_normalize(text), questions[current][0]):
+	if not accepting:
+		return
+	if text == "" or !text_is_valid(_normalize(text), questions[current][0]):
+		feedback_label.text = "Check your answer format!"
 		return
 	accepting = false
 	var correct_answer := str(id_data[questions[current][0]])

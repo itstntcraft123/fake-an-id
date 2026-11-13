@@ -28,8 +28,7 @@ func random_last_name() -> String:
 func random_address() -> String:
 	# address data from github.com/EthanRBrown/rrad from OpenAddresses (public domain)
 	var address: Dictionary = read_data("addresses.json")["addresses"].pick_random()
-	
-	return address["address1"] + "\n" + address["city"] + ", " + address["state"] + " " + address["postalCode"]
+	return address.get("address1", "") + "\n" + address.get("city", "") + ", " + address.get("state", "") + " " + address.get("postalCode", "")
 
 func random_age() -> int:
 	# age group data from www.fhwa.dot.gov/policyinformation/statistics/2023/dl20.cfm
