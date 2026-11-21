@@ -13,6 +13,8 @@ const hud_quiz_pos := {
 	"score": Vector2(1387, 100),
 }
 
+var _hearts_shown := max_lives
+
 @export var escape_screen: PackedScene
 @export var debug_show_answers := true
 @export var debug_show_timer_label := false
@@ -26,7 +28,6 @@ var score := 0 # for now just # of ids passed
 @onready var study_timer: Timer = $StudyTimer
 @onready var timer_label: Label = $UI/Theme/TimerLabel
 @onready var timer_anim: AnimatedSprite2D = $UI/TimerAnim
-# @onready var lives_label: Label = $UI/Theme/LivesLabel
 @onready var hearts: HBoxContainer = $UI/Theme/HeartsContainer
 @onready var score_label: Label = $UI/Theme/ScoreLabel
 @onready var skip_button: Button = $UI/Theme/SkipButton
@@ -137,7 +138,21 @@ func _update_hud() -> void:
 func _update_hearts() -> void:
 	var heart_nodes := hearts.get_children()
 	for i in heart_nodes.size():
-		heart_nodes[i].modulate.a = 1.0 if i < lives else 0.0
+		var heart: Control = heart_nodes[i]
+		if i < lives:
+			heart.modulate.a = 1.0
+		elif i < _hearts_shown:
+			_flash_out(heart)
+		else:
+			heart.modulate.a = 0.0
+	_hearts_shown = lives
+
+func _flash_out(heart: Control) -> void:
+	var t := heart.create_tween()
+	for i in 3:
+		t.tween_property(heart, "modulate:a", 0.0, 0.1)
+		t.tween_property(heart, "modulate:a", 1.0, 0.1)
+	t.tween_property(heart, "modulate:a", 0.0, 0.1)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_close_dialog") and not has_node("EscapeScreen"):
