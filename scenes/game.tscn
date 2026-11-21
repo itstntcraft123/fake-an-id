@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dcq22rey7qc3h" path="res://sprites/game-id.png" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://1t2iqav31vyb" path="res://sprites/facePlaceholder.png" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bo17s2krb6vwg" path="res://scenes/quiz.tscn" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://vuqs0d45dent" path="res://sprites/heart.png" id="7_0tnpc"]
 [ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://b7qgbombmhnf5" path="res://sprites/clock.png" id="8_gee14"]
 
@@ -959,6 +960,35 @@ offset_right = 590.0
 offset_bottom = 920.0
 theme_override_font_sizes/font_size = 36
 text = "LivesLabel"
+
+[node name="HeartsContainer" type="HBoxContainer" parent="UI/Theme" unique_id=1629935513]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 821.0
+offset_right = 714.0
+offset_bottom = 957.0
+theme_override_constants/separation = 40
+
+[node name="TextureRect" type="TextureRect" parent="UI/Theme/HeartsContainer" unique_id=1665946367]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 120)
+custom_maximum_size = Vector2(120, 120)
+layout_mode = 2
+texture = ExtResource("7_0tnpc")
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Theme/HeartsContainer" unique_id=1319862020]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 120)
+custom_maximum_size = Vector2(120, 120)
+layout_mode = 2
+texture = ExtResource("7_0tnpc")
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Theme/HeartsContainer" unique_id=2021144499]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 120)
+custom_maximum_size = Vector2(120, 120)
+layout_mode = 2
+texture = ExtResource("7_0tnpc")
 
 [node name="TimerLabel" type="Label" parent="UI/Theme" unique_id=1752270649]
 layout_mode = 0

@@ -26,7 +26,8 @@ var score := 0 # for now just # of ids passed
 @onready var study_timer: Timer = $StudyTimer
 @onready var timer_label: Label = $UI/Theme/TimerLabel
 @onready var timer_anim: AnimatedSprite2D = $UI/TimerAnim
-@onready var lives_label: Label = $UI/Theme/LivesLabel
+# @onready var lives_label: Label = $UI/Theme/LivesLabel
+@onready var hearts: HBoxContainer = $UI/Theme/HeartsContainer
 @onready var score_label: Label = $UI/Theme/ScoreLabel
 @onready var skip_button: Button = $UI/Theme/SkipButton
 
@@ -82,7 +83,8 @@ func _generate_id() -> void:
 
 func _set_hud_position(in_quiz: bool) -> void:
 	var p := hud_quiz_pos if in_quiz else hud_study_pos
-	lives_label.position = p["lives"]
+	# lives_label.position = p["lives"]
+	hearts.position = p["lives"]
 	score_label.position = p["score"]
 
 func _process(_delta: float) -> void:
@@ -125,8 +127,13 @@ func _game_over() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _update_hud() -> void:
-	lives_label.text = "Lives: %d" % lives
 	score_label.text = "Score: %d" % score
+	_update_hearts()
+
+func _update_hearts() -> void:
+	var heart_nodes := hearts.get_children()
+	for i in heart_nodes.size():
+		heart_nodes[i].modulate.a = 1.0 if i < lives else 0.0
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_close_dialog") and not has_node("EscapeScreen"):
