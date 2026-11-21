@@ -8,13 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dwpaimymi3n3f" path="res://sprites/options-placeholder.png" id="6_oa1go"]
 [ext_resource type="Texture2D" uid="uid://dil7n7jcxyn80" path="res://sprites/quit-placeholder.png" id="7_tbmy8"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tbmy8"]
-load_path = "res://.godot/imported/home-sceen-id-animation.png-39a4d9704ca05199b3e26ab9b4976cc2.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1x85"]
-atlas = SubResource("CompressedTexture2D_tbmy8")
-region = Rect2(0, 0, 64, 36)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5sy4"]
 texture = ExtResource("5_8ln24")
 
@@ -62,7 +55,6 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = SubResource("AtlasTexture_e1x85")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2001314059]
 layout_mode = 1
