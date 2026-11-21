@@ -3,6 +3,12 @@ extends Node2D
 const max_lives := 3
 const study_time := 20.0
 const clock_fps := 4.0
+const points_per_id := 10
+
+var score := 0
+var ids_passed := 0
+var skipped := false
+var skip_time_left := 0.0
 
 const hud_study_pos := {
 	"lives": Vector2(274, 821),
@@ -21,7 +27,6 @@ var _hearts_shown := max_lives
 
 var id_data := {}
 var lives = max_lives
-var score := 0 # for now just # of ids passed
 
 @onready var id_card: Control = $UI/Theme/IDCard
 @onready var quiz: Control = $UI/Theme/Quiz
@@ -47,13 +52,14 @@ func _on_life_lost() -> void:
 
 
 func _start_round() -> void:
+	skipped = false
 	_generate_id()
 	quiz.hide()
 	skip_button.show()
 	id_card.show()
 	timer_label.visible = debug_show_timer_label
 	_update_hud()
-	study_timer.start(maxf(8.0, study_time - score))
+	study_timer.start(maxf(8.0, study_time - ids_passed))
 	timer_anim.show()
 	timer_anim.stop()
 	_set_clock_frame()
@@ -115,11 +121,14 @@ func _on_study_over() -> void:
 	timer_anim.hide()
 	quiz.show()
 	_set_hud_position(true)
-	quiz.start(id_data, 2 + score, score)
+	quiz.start(id_data, 2 + ids_passed, ids_passed)
 	
 func _on_quiz_finished(passed: bool) -> void:
 	if passed: 
-		score += 1
+		ids_passed += 1
+		score += points_per_id
+		if skipped:
+			score += roundi(skip_time_left * quiz.questions.size() / 5.0)
 		_update_hud()
 	if lives <= 0:
 		_game_over()
@@ -160,5 +169,7 @@ func _input(event: InputEvent) -> void:
 		get_tree().paused = true
 
 func _on_skip_button_pressed() -> void:
+	skip_time_left = study_timer.time_left
+	skipped = true
 	study_timer.stop()
 	_on_study_over()
