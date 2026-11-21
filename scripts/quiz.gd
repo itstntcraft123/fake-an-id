@@ -88,6 +88,7 @@ func _on_submit(text: String) -> void:
 	else:
 		_fail("Wrong answer buddy. It was: ")
 
+# followng code made every even numbered quesiton skip for some reason
 	#if _normalize(text) == _normalize(correct_answer):
 		#current += 1
 		#if current >= questions.size():

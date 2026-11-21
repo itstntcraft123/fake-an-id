@@ -13,6 +13,8 @@ var arrow_shown := false
 @export var tween_time := 0.1
 @onready var timer_interval: float = $Timer.wait_time
 
+var intro_active := false
+
 func _input(event: InputEvent) -> void:
 	if not show_arrow:
 		return
@@ -57,12 +59,18 @@ func _ready() -> void:
 	sort_children.connect(_reapply_scale)
 
 func _tween_scale(button: Control, target: Vector2) -> void:
+	if intro_active:
+		return
+	
 	button.pivot_offset = button.size / 2.0
 	var tween := button.create_tween()
 	tween.tween_property(button, "scale", target, tween_time)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _reapply_scale() -> void:
+	if intro_active:
+		return
+	
 	var focused := get_viewport().gui_get_focus_owner()
 	for child in get_children():
 		if child is Button:
@@ -77,6 +85,9 @@ func get_hovered_child() -> Control:
 	return null
 
 func _process(_delta: float) -> void:
+	if intro_active:
+		return
+	
 	var hovered := get_hovered_child()
 	if hovered and hovered != prev_hovered:
 		reset_arrow()
