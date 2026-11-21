@@ -952,15 +952,6 @@ text = "[eyec]"
 visible = false
 layout_mode = 1
 
-[node name="LivesLabel" type="Label" parent="UI/Theme" unique_id=210568411]
-layout_mode = 0
-offset_left = 407.0
-offset_top = 872.0
-offset_right = 590.0
-offset_bottom = 920.0
-theme_override_font_sizes/font_size = 36
-text = "LivesLabel"
-
 [node name="HeartsContainer" type="HBoxContainer" parent="UI/Theme" unique_id=1629935513]
 layout_mode = 0
 offset_left = 274.0
