@@ -3,7 +3,7 @@ extends Control
 @export var sheet: Texture2D
 @export var frame_size := Vector2i(64, 36)
 @export var frame_count := 108
-@export var fps := 10.0
+@export var fps := 12.0
 
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var buttons: Array[Control] = [
