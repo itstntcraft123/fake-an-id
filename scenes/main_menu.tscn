@@ -3,13 +3,16 @@
 [ext_resource type="Theme" uid="uid://ckm8ormicu8rl" path="res://theme.tres" id="1_0fbet"]
 [ext_resource type="Script" uid="uid://blqkatqoktqes" path="res://scripts/main_menu.gd" id="2_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://bmdsk1kuk34xi" path="res://scenes/select_menu.tscn" id="2_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://cc0ufvireecon" path="res://sprites/home-sceen-id-animation.png" id="3_oa1go"]
+[ext_resource type="Texture2D" uid="uid://8qmswt2tg4ou" path="res://sprites/home-sceen-id-animation-sheet.png" id="3_oa1go"]
 [ext_resource type="Texture2D" uid="uid://ctyepyutkmtva" path="res://sprites/play-button.png" id="5_8ln24"]
 [ext_resource type="Texture2D" uid="uid://dwpaimymi3n3f" path="res://sprites/options-placeholder.png" id="6_oa1go"]
 [ext_resource type="Texture2D" uid="uid://dil7n7jcxyn80" path="res://sprites/quit-placeholder.png" id="7_tbmy8"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tbmy8"]
+load_path = "res://.godot/imported/home-sceen-id-animation.png-39a4d9704ca05199b3e26ab9b4976cc2.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1x85"]
-atlas = ExtResource("3_oa1go")
+atlas = SubResource("CompressedTexture2D_tbmy8")
 region = Rect2(0, 0, 64, 36)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5sy4"]
