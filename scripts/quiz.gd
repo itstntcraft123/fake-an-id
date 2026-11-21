@@ -73,6 +73,9 @@ func _normalize(string: String) -> String:
 	return clean_regex.sub(string.to_lower().replace("lbs", "").replace("lb", ""), "", true)
 
 func _on_submit(text: String) -> void:
+	if not accepting:
+		return
+	
 	var correct_answer := str(id_data[questions[current][0]])
 	if _normalize(text) == _normalize(correct_answer):
 		accepting = false
@@ -85,18 +88,18 @@ func _on_submit(text: String) -> void:
 	else:
 		_fail("Wrong answer buddy. It was: ")
 
-	if _normalize(text) == _normalize(correct_answer):
-		current += 1
-		if current >= questions.size():
-			finished.emit(true)
-		else:
-			_show_question()
-	else:
-		answer_edit.editable = false
-		submit_button.disabled = true
-		feedback_label.text = "Wrong answer buddy. It was: " + correct_answer
-		await get_tree().create_timer(1.5).timeout
-		finished.emit(false)
+	#if _normalize(text) == _normalize(correct_answer):
+		#current += 1
+		#if current >= questions.size():
+			#finished.emit(true)
+		#else:
+			#_show_question()
+	#else:
+		#answer_edit.editable = false
+		#submit_button.disabled = true
+		#feedback_label.text = "Wrong answer buddy. It was: " + correct_answer
+		#await get_tree().create_timer(1.5).timeout
+		#finished.emit(false)
 
 func _fail(message: String) -> void:
 	accepting = false
