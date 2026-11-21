@@ -88,20 +88,6 @@ func _on_submit(text: String) -> void:
 	else:
 		_fail("Wrong answer buddy. It was: ")
 
-# followng code made every even numbered quesiton skip for some reason
-	#if _normalize(text) == _normalize(correct_answer):
-		#current += 1
-		#if current >= questions.size():
-			#finished.emit(true)
-		#else:
-			#_show_question()
-	#else:
-		#answer_edit.editable = false
-		#submit_button.disabled = true
-		#feedback_label.text = "Wrong answer buddy. It was: " + correct_answer
-		#await get_tree().create_timer(1.5).timeout
-		#finished.emit(false)
-
 func _fail(message: String) -> void:
 	accepting = false
 	answer_timer.stop()

@@ -90,7 +90,6 @@ func _generate_id() -> void:
 
 func _set_hud_position(in_quiz: bool) -> void:
 	var p := hud_quiz_pos if in_quiz else hud_study_pos
-	# lives_label.position = p["lives"]
 	hearts.position = p["lives"]
 	score_label.position = p["score"]
 
