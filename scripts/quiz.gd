@@ -4,7 +4,6 @@ var show_answers := true
 @onready var debug_label: Label = $DebugAnswerLabel
 var clean_regex = RegEx.new()
 
-
 @export var normal_time := 10.0
 @export var fast_time := 5.0
 @export var fast_score_threshold := 10
@@ -15,6 +14,7 @@ var clean_regex = RegEx.new()
 var score := 0
 
 signal finished(passed: bool)
+signal life_lost
 
 const question_bank := [
 	["first_name", "What is your first name?"],
@@ -109,6 +109,7 @@ func _fail(message: String) -> void:
 	submit_button.disabled = true
 	var correct_answer := str(id_data[questions[current][0]])
 	feedback_label.text = message + correct_answer
+	life_lost.emit()
 	await get_tree().create_timer(1.5).timeout
 	finished.emit(false)
 

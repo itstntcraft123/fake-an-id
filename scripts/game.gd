@@ -5,7 +5,7 @@ const study_time := 20.0
 const clock_fps := 4.0
 
 const hud_study_pos := {
-	"lives": Vector2(418, 874),
+	"lives": Vector2(274, 821),
 	"score": Vector2(749, 841),
 }
 const hud_quiz_pos := {
@@ -35,8 +35,15 @@ func _ready() -> void:
 	study_timer.one_shot = true
 	study_timer.timeout.connect(_on_study_over)
 	quiz.finished.connect(_on_quiz_finished)
+	quiz.life_lost.connect(_on_life_lost)
 	quiz.set_show_answers(debug_show_answers)
 	_start_round()
+
+func _on_life_lost() -> void:
+	lives -= 1
+	_update_hud()
+	
+
 
 func _start_round() -> void:
 	_generate_id()
@@ -113,9 +120,7 @@ func _on_study_over() -> void:
 func _on_quiz_finished(passed: bool) -> void:
 	if passed: 
 		score += 1
-	else: 
-		lives -= 1
-	_update_hud()
+		_update_hud()
 	if lives <= 0:
 		_game_over()
 	else:
