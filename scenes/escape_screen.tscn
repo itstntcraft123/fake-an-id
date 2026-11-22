@@ -4,6 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bmdsk1kuk34xi" path="res://scenes/select_menu.tscn" id="2_gjwmd"]
 [ext_resource type="Script" uid="uid://blfn6jja01qe8" path="res://scripts/escape_screen.gd" id="2_k22dc"]
 [ext_resource type="PackedScene" uid="uid://mbv80ufx3lia" path="res://scenes/options.tscn" id="3_k22dc"]
+[ext_resource type="Shader" uid="uid://bqxxu0na8hs18" path="res://shaders/blur.gdshader" id="4_a2a6c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0xnd"]
+shader = ExtResource("4_a2a6c")
+shader_parameter/blur_amount = 4.0
+shader_parameter/darken = 0.3
 
 [node name="EscapeScreen" type="Control" unique_id=1642114743]
 process_mode = 3
@@ -17,7 +23,8 @@ theme = ExtResource("1_sgwcy")
 script = ExtResource("2_k22dc")
 options = ExtResource("3_k22dc")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=8049346]
+[node name="Blur" type="ColorRect" parent="." unique_id=8049346]
+material = SubResource("ShaderMaterial_e0xnd")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
