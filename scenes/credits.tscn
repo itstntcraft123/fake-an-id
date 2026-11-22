@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://din2a3pk83ikt"]
+
+[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="1_0bpdh"]
+[ext_resource type="Script" uid="uid://c3i2ko8obfm5v" path="res://scripts/credits.gd" id="1_2ckv8"]
+[ext_resource type="Texture2D" uid="uid://8qmswt2tg4ou" path="res://sprites/home-sceen-id-animation-sheet.png" id="2_0ctdu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ao8sq"]
+atlas = ExtResource("2_0ctdu")
+region = Rect2(6848, 0, 64, 36)
+
+[node name="Credits" type="Control" unique_id=831158797]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ckv8")
+scroll_speed = 120.0
+
+[node name="Background" type="TextureRect" parent="." unique_id=479376016]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ao8sq")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=377529053]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7647059)
+
+[node name="Scroll" type="ScrollContainer" parent="." unique_id=674007598]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Content" type="VBoxContainer" parent="Scroll" unique_id=1736903090]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Title" type="Label" parent="Scroll/Content" unique_id=2001370463]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 160
+text = "Fake an ID"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Scroll/Content" unique_id=50536646]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 96
+text = "Design - itstntcraft123, rbird_"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Scroll/Content" unique_id=459545167]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 96
+text = "Programming - itstntcraft123, rbird_"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Scroll/Content" unique_id=257589728]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 96
+text = "UI Design - itstntcraft123, rbird_"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Scroll/Content" unique_id=1636518861]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 96
+text = "Art - rbird_"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Scroll/Content" unique_id=416884418]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 96
+text = "THANK YOU FOR PLAYING"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Scroll/Content" unique_id=956222592]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 130
+text = "<3"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="." unique_id=703493867]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 830.0
+offset_top = 829.0
+offset_right = 1077.0
+offset_bottom = 968.0
+theme_override_colors/font_color = Color(1, 0.49803922, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.90588236, 0.90588236, 0.22745098, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 100
+text = "Back"

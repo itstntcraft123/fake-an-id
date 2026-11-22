@@ -15,6 +15,6 @@ func _on_select_menu_selected(_index: int, item: Control) -> void:
 		"Controls":
 			pass
 		"Credits":
-			pass
+			Utils.switch_scene_as_child(self, "res://scenes/credits.tscn", item)
 		"Back":
 			Utils.change_scene_to_file(self, "res://scenes/main_menu.tscn")
