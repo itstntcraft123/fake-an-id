@@ -62,42 +62,56 @@ theme_override_font_sizes/font_size = 160
 text = "Fake an ID"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Scroll/Content" unique_id=50536646]
+[node name="Design" type="Label" parent="Scroll/Content" unique_id=50536646]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0bpdh")
 theme_override_font_sizes/font_size = 96
-text = "Design - itstntcraft123, rbird_"
+text = "Design - itstntcraft123, rbird6"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Scroll/Content" unique_id=459545167]
+[node name="Programming" type="Label" parent="Scroll/Content" unique_id=459545167]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0bpdh")
 theme_override_font_sizes/font_size = 96
-text = "Programming - itstntcraft123, rbird_"
+text = "Programming - itstntcraft123, rbird6"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="Scroll/Content" unique_id=257589728]
+[node name="UIDesign" type="Label" parent="Scroll/Content" unique_id=257589728]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0bpdh")
 theme_override_font_sizes/font_size = 96
-text = "UI Design - itstntcraft123, rbird_"
+text = "UI Design - itstntcraft123, rbird6"
 horizontal_alignment = 1
 
-[node name="Label7" type="Label" parent="Scroll/Content" unique_id=1666086499]
+[node name="DataExtraction" type="Label" parent="Scroll/Content" unique_id=1666086499]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0bpdh")
 theme_override_font_sizes/font_size = 96
 text = "Data Extraction - itstntcraft123"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="Scroll/Content" unique_id=1636518861]
+[node name="Art" type="Label" parent="Scroll/Content" unique_id=1636518861]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0bpdh")
 theme_override_font_sizes/font_size = 96
-text = "Art - rbird_"
+text = "Art - rbird6"
 horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="Scroll/Content" unique_id=416884418]
+[node name="MadeWith" type="Label" parent="Scroll/Content" unique_id=654743526]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 96
+text = "Made with Godot 4"
+horizontal_alignment = 1
+
+[node name="ArtMadeWith" type="Label" parent="Scroll/Content" unique_id=1538568541]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 96
+text = "Art made with Libresprite"
+horizontal_alignment = 1
+
+[node name="ThxForPlaying" type="Label" parent="Scroll/Content" unique_id=416884418]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_0bpdh")
@@ -105,7 +119,7 @@ theme_override_font_sizes/font_size = 96
 text = "THANK YOU FOR PLAYING"
 horizontal_alignment = 1
 
-[node name="Label6" type="Label" parent="Scroll/Content" unique_id=956222592]
+[node name="<3" type="Label" parent="Scroll/Content" unique_id=956222592]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_0bpdh")
