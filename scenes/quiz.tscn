@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bo17s2krb6vwg"]
 
 [ext_resource type="Script" uid="uid://mifrix6spaja" path="res://scripts/quiz.gd" id="1_36y45"]
+[ext_resource type="Texture2D" uid="uid://b7pbwp5g8bcjj" path="res://sprites/background.png" id="2_2fkxq"]
 [ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="2_jng0p"]
 
 [node name="Quiz" type="Control" unique_id=942844882]
@@ -17,6 +18,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+texture = ExtResource("2_2fkxq")
 expand_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=789501954]
@@ -91,10 +93,10 @@ horizontal_alignment = 1
 
 [node name="DebugAnswerLabel" type="Label" parent="." unique_id=540645695]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 69.0
-offset_bottom = 24.0
+offset_left = 27.0
+offset_top = 17.0
+offset_right = 155.0
+offset_bottom = 60.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_jng0p")
 theme_override_font_sizes/font_size = 32

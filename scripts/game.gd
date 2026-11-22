@@ -14,8 +14,11 @@ const hud_study_pos := {
 	"lives": Vector2(274, 821),
 	"score": Vector2(749, 841),
 }
+const score_study_color := Color("8231de")
+const score_quiz_color := Color.YELLOW
+
 const hud_quiz_pos := {
-	"lives": Vector2(1395, 200),
+	"lives": Vector2(1395, 230),
 	"score": Vector2(1387, 100),
 }
 
@@ -102,6 +105,7 @@ func _set_hud_position(in_quiz: bool) -> void:
 	var p := hud_quiz_pos if in_quiz else hud_study_pos
 	hearts.position = p["lives"]
 	score_label.position = p["score"]
+	score_label.add_theme_color_override("font_color", score_quiz_color if in_quiz else score_study_color)
 
 func _process(_delta: float) -> void:
 	if study_timer.is_stopped():
