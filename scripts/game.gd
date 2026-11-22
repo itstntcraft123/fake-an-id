@@ -93,6 +93,9 @@ func _generate_id() -> void:
 	}
 	
 	for key in id_data:
+		var pascal := Utils.snake_to_pascal(key)
+		var holder: Control = get_node("UI/Theme/IDCard/" + pascal + "Label")
+		holder.visible = Utils.field_unlocked(key, score)
 		get_node("UI/Theme/IDCard/" + Utils.snake_to_pascal(key) + "Label/" + Utils.snake_to_pascal(key)).text = id_data[key]
 
 func _set_hud_position(in_quiz: bool) -> void:
@@ -121,8 +124,8 @@ func _on_study_over() -> void:
 	timer_anim.hide()
 	quiz.show()
 	_set_hud_position(true)
-	quiz.start(id_data, 2 + ids_passed, ids_passed)
-	
+	quiz.start(id_data, 2 + ids_passed, ids_passed, score)
+
 func _on_quiz_finished(passed: bool) -> void:
 	if passed: 
 		ids_passed += 1

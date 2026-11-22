@@ -25,7 +25,13 @@ const question_bank := [
 	["weight", "What is your weight? (lbs)"],
 	["hair_color", "What is your hair color? (e.g. BRN)"],
 	["eye_color", "What is your eye color? (e.g. BRN)"],
-	["drivers_class", "What is your license class?"]
+	["drivers_class", "What is your license class?"],
+	["issue_date", "What is the issue date? (MM/DD/YYYY)"], 
+	["license_no", "What are the last 3 digits of your license number?", "last3"], 
+	["restrictions", "What are your restrictions? (NONE of none)"], 
+	["endorsements", "What are your endorsements? (NONE of none)"], 
+	["address", "What sttate do you live in? (e.g. CA)", "state"], 
+	["dd", "What are the last 4 characters of your DD?", "last4"],
 ]
 
 @onready var progress_label: Label = %ProgressLabel
@@ -47,10 +53,10 @@ func _ready() -> void:
 	answer_timer.one_shot = true
 	answer_timer.timeout.connect(_on_time_up)
 
-func start(data: Dictionary, count: int, current_score: int = 0) -> void:
+func start(data: Dictionary, count: int, current_score: int = 0, points: int = 0) -> void:
 	id_data = data
 	score = current_score
-	var pool := question_bank.duplicate()
+	var pool := question_bank.filter(func(q:Array) -> bool: return Utils.field_unlocked(q[0], points))
 	pool.shuffle()
 	questions = pool.slice(0, mini(count, pool.size()))
 	current = 0
@@ -76,7 +82,7 @@ func _on_submit(text: String) -> void:
 	if not accepting:
 		return
 	
-	var correct_answer := str(id_data[questions[current][0]])
+	var correct_answer := _correct_answer()
 	if _normalize(text) == _normalize(correct_answer):
 		accepting = false
 		answer_timer.stop()
@@ -88,12 +94,26 @@ func _on_submit(text: String) -> void:
 	else:
 		_fail("Wrong answer buddy. It was: ")
 
+func _correct_answer() -> String:
+	var q: Array = questions[current]
+	var value:= str(id_data[q[0]])
+	var mode: String = q[2] if q.size() > 2 else ""
+	match mode:
+		"last3":
+			return value.right(3)
+		"last4":
+			return value.right(4)
+		"state":
+			return value.split("\n")[-1].split(",")[-1].strip_edges().split(" ")[0]
+		_:
+			return value
+
 func _fail(message: String) -> void:
 	accepting = false
 	answer_timer.stop()
 	answer_edit.editable = false
 	submit_button.disabled = true
-	var correct_answer := str(id_data[questions[current][0]])
+	var correct_answer := _correct_answer()
 	feedback_label.text = message + correct_answer
 	life_lost.emit()
 	await get_tree().create_timer(1.5).timeout
@@ -112,7 +132,7 @@ func _refresh_debug() -> void:
 		return
 	debug_label.visible = show_answers and visible and current < questions.size()
 	if debug_label.visible:
-		debug_label.text = "DEBUG answer: " + str(id_data[questions[current][0]])
+		debug_label.text = "DEBUG answer: " + _correct_answer()
 
 # returns if an answer is valid. does not check extensively to allow mistakes while stopping typos.
 func text_is_valid(text: String, question: String) -> bool:

@@ -1,4 +1,17 @@
 extends Node
+
+const FIELD_MIN_SCORE := {
+	"issue_date": 20, 
+	"license_no": 40, 
+	"restrictions": 70, 
+	"endorsements": 70, 
+	"address": 100, 
+	"dd": 150
+}
+
+func field_unlocked(field: String, points: int) -> bool:
+	return points > FIELD_MIN_SCORE.get(field, -1)
+
 # Unless cited in the function, the random_ functions do not reflect real data (or do so inaccurately).
 var rng := RandomNumberGenerator.new()
 
