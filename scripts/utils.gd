@@ -9,6 +9,10 @@ const FIELD_MIN_SCORE := {
 	"dd": 150
 }
 
+# for game over screen
+var last_ids_passed := 0
+var last_score := 0
+
 func field_unlocked(field: String, points: int) -> bool:
 	return points > FIELD_MIN_SCORE.get(field, -1)
 

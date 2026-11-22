@@ -124,7 +124,7 @@ func _on_study_over() -> void:
 	timer_anim.hide()
 	quiz.show()
 	_set_hud_position(true)
-	quiz.start(id_data, 2 + ids_passed, ids_passed, score)
+	quiz.start(id_data, 2 + ids_passed / 2, ids_passed, score)
 
 func _on_quiz_finished(passed: bool) -> void:
 	if passed: 
@@ -140,8 +140,10 @@ func _on_quiz_finished(passed: bool) -> void:
 
 func _game_over() -> void:
 	quiz.hide()
-	print("Game over. Score: " + str(score))
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	Utils.last_ids_passed = ids_passed
+	Utils.last_score = score
+	print("Game over. \n Score: " + str(score) + "\n IDs passed:" + str(ids_passed))
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _update_hud() -> void:
 	score_label.text = "Score: %d" % score

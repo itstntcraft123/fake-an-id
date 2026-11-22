@@ -96,6 +96,7 @@ func _process(_delta: float) -> void:
 	update_label()
 
 func _on_button_pressed(index: int, item: Control) -> void:
+	print("pressed ", item.name)
 	selected.emit(index, item)
 
 func _on_timer_timeout() -> void:

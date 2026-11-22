@@ -1,3 +1,90 @@
 [gd_scene format=3 uid="uid://dchxwvjg8v2i"]
 
-[node name="GameOver" type="Node2D" unique_id=724176314]
+[ext_resource type="Script" uid="uid://cpccq23khidx5" path="res://scenes/game_over.gd" id="1_wqhvx"]
+[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="2_racf3"]
+[ext_resource type="Script" uid="uid://dco1cagudndq3" path="res://scripts/select_menu.gd" id="2_tbwuq"]
+
+[node name="GameOver" type="Control" unique_id=953884494]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wqhvx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1408444029]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=301146814]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=296643030]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1115201897]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.22745098, 0.18431373, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("2_racf3")
+theme_override_font_sizes/font_size = 200
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="IdsLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=256054532]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_racf3")
+theme_override_font_sizes/font_size = 96
+text = "IDs Passed: 12"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2115688262]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_racf3")
+theme_override_font_sizes/font_size = 96
+text = "Score: 123"
+horizontal_alignment = 1
+
+[node name="MainMenu" type="BoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1878565193]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 90
+alignment = 1
+script = ExtResource("2_tbwuq")
+
+[node name="Restart" type="Button" parent="MarginContainer/VBoxContainer/MainMenu" unique_id=575906775]
+custom_minimum_size = Vector2(400, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_racf3")
+theme_override_font_sizes/font_size = 64
+text = "Play Again"
+
+[node name="Menu" type="Button" parent="MarginContainer/VBoxContainer/MainMenu" unique_id=2054672292]
+custom_minimum_size = Vector2(400, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_racf3")
+theme_override_font_sizes/font_size = 64
+text = "Main Menu"
+
+[node name="Timer" type="Timer" parent="MarginContainer/VBoxContainer/MainMenu" unique_id=703976081]
