@@ -90,8 +90,8 @@ You'll be given an ID, study it like your life depends on it (it does).
 [font_size=90] [/font_size][b]2. Wait[/b][font_size=90] [/font_size]
 A timer counts down, better use that time wisely.
 [font_size=90] [/font_size][b]3. Get Cooked[/b][font_size=90] [/font_size]
-When the timer hits zero, you will get asked questions. Don't answer wrong.
-[font_size=75] [/font_size][b][i]Score points through time and accuracy.[/i][/b][font_size=75] [/font_size]"
+When the timer hits zero, you will get asked questions. Don't answer wrong, or lose a life.
+[font_size=75] [/font_size][b][i]Score points through time (skip) and accuracy.[/i][/b][font_size=75] [/font_size]"
 
 [node name="SelectMenu" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=599726139]
 layout_mode = 2
