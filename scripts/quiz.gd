@@ -4,9 +4,9 @@ var show_answers := true
 @onready var debug_label: Label = $DebugAnswerLabel
 var clean_regex = RegEx.new()
 
-@export var normal_time := 10.0
-@export var fast_time := 5.0
-@export var fast_score_threshold := 10
+@export var normal_time := 15.0
+@export var fast_time := 7.5
+@export var fast_score_threshold := 200
 
 @onready var answer_timer: Timer = $AnswerTimer
 @onready var time_left_label: ProgressBar = %TimeLeftBar
@@ -27,9 +27,9 @@ const question_bank := [
 	["eye_color", "What is your eye color? (e.g. BRN)"],
 	["drivers_class", "What is your license class?"],
 	["issue_date", "What is the issue date? (MM/DD/YYYY)"], 
-	["license_no", "What are the last 3 digits of your license number?", "last3"], 
-	["restrictions", "What are your restrictions? (NONE of none)"], 
-	["endorsements", "What are your endorsements? (NONE of none)"], 
+	["license_no", "What are the last 3 digits \n of your license number?", "last3"], 
+	["restrictions", "What are your restrictions?"], 
+	["endorsements", "What are your endorsements?"], 
 	["address", "What sttate do you live in? (e.g. CA)", "state"], 
 	["dd", "What are the last 4 characters of your DD?", "last4"],
 ]

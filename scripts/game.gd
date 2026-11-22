@@ -62,7 +62,7 @@ func _start_round() -> void:
 	id_card.show()
 	timer_label.visible = debug_show_timer_label
 	_update_hud()
-	study_timer.start(maxf(8.0, study_time - ids_passed))
+	study_timer.start(maxf(8.0, ceil(study_time - ids_passed * 0.3)))
 	timer_anim.show()
 	timer_anim.stop()
 	_set_clock_frame()
