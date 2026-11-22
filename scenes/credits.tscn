@@ -83,6 +83,13 @@ theme_override_font_sizes/font_size = 96
 text = "UI Design - itstntcraft123, rbird_"
 horizontal_alignment = 1
 
+[node name="Label7" type="Label" parent="Scroll/Content" unique_id=1666086499]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 96
+text = "Data Extraction - itstntcraft123"
+horizontal_alignment = 1
+
 [node name="Label4" type="Label" parent="Scroll/Content" unique_id=1636518861]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0bpdh")
