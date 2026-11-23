@@ -1,13 +1,16 @@
 # fake-an-id
-[screenshot here]
+![Screenshot](image.png)
 
-Fake An ID is a game made in Godot where you must remember a randomly generated U.S. Driver's License to fool airport security.
+Fake An ID is a game made in Godot where you must remember a randomly generated fake U.S. Driver's License to fool airport security.
 
 ## Usage
-You can check out and play this project at [exported godot link here], or you can download a copy from the releases section.
+You can check out and play this project at the [itch page](https://itstntcraft.itch.io/fake-an-id), or you can download a copy for your OS and architecture from the releases section.
 
 ## Development
 To develop on this project, `git clone` this repo and open it in the Godot editor.
+
+> [!NOTE]
+> Answers for quiz questions will be shown in debug builds and in the editor.
 
 ## Data
 Datasets used by this project for random generation are in [data/](data/), and you can find credits in [data/CREDITS.md](data/CREDITS.md). You can also see what source a function uses in [scripts/utils.gd](scripts/utils.gd). If there is no link in a function, the data used in that function does not reflect real data.

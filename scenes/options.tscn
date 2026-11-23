@@ -37,14 +37,6 @@ horizontal_alignment = 1
 layout_mode = 2
 vertical = true
 
-[node name="Sounds" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=635173152]
-layout_mode = 2
-text = "music & sounds"
-
-[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=792660052]
-layout_mode = 2
-text = "controls"
-
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/SelectMenu" unique_id=273113489]
 layout_mode = 2
 text = "credits"
