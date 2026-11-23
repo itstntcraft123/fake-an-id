@@ -51,8 +51,6 @@ func _ready() -> void:
 func _on_life_lost() -> void:
 	lives -= 1
 	_update_hud()
-	
-
 
 func _start_round() -> void:
 	skipped = false
@@ -119,7 +117,7 @@ func _set_clock_frame() -> void:
 	var sheet_duration := frame_count / clock_fps
 	var elapsed_on_sheet := sheet_duration - study_timer.time_left
 	timer_anim.frame = clampi(int(elapsed_on_sheet * clock_fps), 0, frame_count - 1)
-	# print(progress, " ", frame_count, " ", timer_anim.frame) 
+	#print(progress, " ", frame_count, " ", timer_anim.frame) 
 
 func _on_study_over() -> void:
 	skip_button.hide()
@@ -128,6 +126,7 @@ func _on_study_over() -> void:
 	timer_anim.hide()
 	quiz.show()
 	_set_hud_position(true)
+	@warning_ignore("integer_division")
 	quiz.start(id_data, 2 + ids_passed / 2, ids_passed, score)
 
 func _on_quiz_finished(passed: bool) -> void:
@@ -146,7 +145,7 @@ func _game_over() -> void:
 	quiz.hide()
 	Utils.last_ids_passed = ids_passed
 	Utils.last_score = score
-	print("Game over. \n Score: " + str(score) + "\n IDs passed:" + str(ids_passed))
+	#print("Game over. \n Score: " + str(score) + "\n IDs passed:" + str(ids_passed))
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _update_hud() -> void:

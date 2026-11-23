@@ -75,7 +75,9 @@ func _show_question() -> void:
 	time_left_label.max_value = answer_timer.wait_time
 	_refresh_debug()
 
-func _normalize(string: String) -> String:
+func _normalize(string: String, question: String) -> String:
+	if question.ends_with("date") or question == "dob":
+		return "/".join(Array(string.split_floats("/", true)))
 	return clean_regex.sub(string.to_lower().replace("lbs", "").replace("lb", ""), "", true)
 
 func _on_submit(text: String) -> void:
@@ -83,7 +85,7 @@ func _on_submit(text: String) -> void:
 		return
 	
 	var correct_answer := _correct_answer()
-	if _normalize(text) == _normalize(correct_answer):
+	if _normalize(text, questions[current][0]) == _normalize(correct_answer, questions[current][0]):
 		accepting = false
 		answer_timer.stop()
 		current += 1

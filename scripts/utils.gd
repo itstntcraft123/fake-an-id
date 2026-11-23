@@ -290,13 +290,13 @@ func switch_scene_as_child(parent: Node, path: String, option: Node, hide: Array
 	var parent_prev_mode := parent.process_mode
 	parent.process_mode = Node.PROCESS_MODE_DISABLED
 	var scene = load(path).instantiate()
-	scene.tree_exited.connect(on_tree_exited.bind(parent, option, hide, parent_prev_mode))
+	scene.tree_exited.connect(_on_tree_exited.bind(parent, option, hide, parent_prev_mode))
 	scene.process_mode = Node.PROCESS_MODE_ALWAYS
 	if "is_child" in scene:
 		scene.is_child = true
 	parent.add_child(scene)
 
-func on_tree_exited(parent: Node, option: Node, hide: Array = [], parent_prev_mode: Node.ProcessMode = Node.PROCESS_MODE_INHERIT) -> void:
+func _on_tree_exited(parent: Node, option: Node, hide: Array = [], parent_prev_mode: Node.ProcessMode = Node.PROCESS_MODE_INHERIT) -> void:
 	for node in hide:
 		if is_instance_valid(node):
 			node.show()
