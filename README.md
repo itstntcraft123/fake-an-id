@@ -1,4 +1,4 @@
-# fake-an-id
+# Fake an ID
 ![Screenshot](image.png)
 
 Fake An ID is a game made in Godot where you must remember a randomly generated fake U.S. Driver's License to fool airport security.
