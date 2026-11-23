@@ -140,4 +140,4 @@ theme_override_colors/font_pressed_color = Color(0.90588236, 0.90588236, 0.22745
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("1_0bpdh")
 theme_override_font_sizes/font_size = 100
-text = "Back"
+text = "back"
