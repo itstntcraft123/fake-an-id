@@ -43,7 +43,3 @@ func _exit() -> void:
 	if tween:
 		tween.kill()
 	Utils.change_scene_to_file(self, "res://scenes/options.tscn")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

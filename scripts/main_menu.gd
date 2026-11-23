@@ -14,28 +14,32 @@ extends Control
 @onready var menu: BoxContainer = $MarginContainer/VBoxContainer/MainMenu
 
 func _ready() -> void:
-	menu.intro_active = true
-	for b in buttons:
-		b.modulate.a = 0.0
+	if !Utils.show_intro:
+		var atlas := AtlasTexture.new()
+		atlas.atlas = sheet
+		atlas.region = Rect2((frame_count - 1) * frame_size.x, 0, frame_size.x, frame_size.y)
+		texture_rect.texture = atlas
 	
-	var atlas := AtlasTexture.new()
-	atlas.atlas = sheet
-	atlas.region = Rect2(0, 0, frame_size.x, frame_size.y)
-	texture_rect.texture = atlas
-	
-	texture_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
-	
-	var last := frame_count - 1
-	var tween := create_tween()
-	tween.tween_method(func(f: float) -> void: atlas.region = Rect2(int(f) * frame_size.x, 0, frame_size.x, frame_size.y), 0.0, float(last), last / fps)
-	tween.tween_interval(0.2)
-	tween.tween_callback(_reveal_buttons)
-	
-	await get_tree().process_frame
-	for b in buttons:
-		b.scale = Vector2.ZERO
+	else:
+		Utils.show_intro = false
+		menu.intro_active = true
+		for b in buttons:
+			b.modulate.a = 0.0
+		
+		var atlas := AtlasTexture.new()
+		atlas.atlas = sheet
+		atlas.region = Rect2(0, 0, frame_size.x, frame_size.y)
+		texture_rect.texture = atlas
+		
+		var last := frame_count - 1
+		var tween := create_tween()
+		tween.tween_method(func(f: float) -> void: atlas.region = Rect2(int(f) * frame_size.x, 0, frame_size.x, frame_size.y), 0.0, float(last), last / fps)
+		tween.tween_interval(0.2)
+		tween.tween_callback(_reveal_buttons)
+		
+		await get_tree().process_frame
+		for b in buttons:
+			b.scale = Vector2.ZERO
 	
 func _reveal_buttons() -> void:
 	var focused := get_viewport().gui_get_focus_owner()
@@ -47,9 +51,6 @@ func _reveal_buttons() -> void:
 		b.modulate.a = 1.0
 		t.tween_property(b, "scale", target, 0.4).set_delay(i * 0.1).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	t.finished.connect(func() -> void: menu.intro_active = false)
-
-func _process(_delta: float) -> void:
-	pass
 
 func _on_select_menu_selected(_index: int, item: Control) -> void:
 	if menu.intro_active:

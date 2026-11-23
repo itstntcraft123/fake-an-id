@@ -1,5 +1,7 @@
 extends Node
 
+var show_intro := true
+
 const FIELD_MIN_SCORE := {
 	"issue_date": 20, 
 	"license_no": 40, 
