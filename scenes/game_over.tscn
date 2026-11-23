@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://ckm8ormicu8rl" path="res://theme.tres" id="1_racf3"]
 [ext_resource type="Script" uid="uid://cpccq23khidx5" path="res://scripts/game_over.gd" id="1_wqhvx"]
-[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="2_racf3"]
+[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://fonts/GeistPixel.ttf" id="2_racf3"]
 [ext_resource type="Script" uid="uid://dco1cagudndq3" path="res://scripts/select_menu.gd" id="2_tbwuq"]
 
 [node name="GameOver" type="Control" unique_id=953884494]

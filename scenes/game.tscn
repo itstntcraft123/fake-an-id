@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://1t2iqav31vyb" path="res://sprites/facePlaceholder.png" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bo17s2krb6vwg" path="res://scenes/quiz.tscn" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://vuqs0d45dent" path="res://sprites/heart.png" id="7_0tnpc"]
-[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="7_u5sy4"]
+[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://fonts/GeistPixel.ttf" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://b7qgbombmhnf5" path="res://sprites/clock.png" id="8_gee14"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]

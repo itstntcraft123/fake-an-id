@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ctfx8b5m5dntu"
-path="res://.godot/imported/GeistPixel.ttf-7b8c52616f7afe67b69fb843df786922.fontdata"
+path="res://.godot/imported/GeistPixel.ttf-3740614b68da6fbbf0e4bfca09012574.fontdata"
 
 [deps]
 
-source_file="res://GeistPixel.ttf"
-dest_files=["res://.godot/imported/GeistPixel.ttf-7b8c52616f7afe67b69fb843df786922.fontdata"]
+source_file="res://fonts/GeistPixel.ttf"
+dest_files=["res://.godot/imported/GeistPixel.ttf-3740614b68da6fbbf0e4bfca09012574.fontdata"]
 
 [params]
 

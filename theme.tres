@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://ckm8ormicu8rl"]
 
-[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="1_e1x85"]
+[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://fonts/GeistPixel.ttf" id="1_e1x85"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rmny"]
 content_margin_left = 4.0

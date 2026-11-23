@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mifrix6spaja" path="res://scripts/quiz.gd" id="1_36y45"]
 [ext_resource type="Texture2D" uid="uid://b7pbwp5g8bcjj" path="res://sprites/background.png" id="2_2fkxq"]
-[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="2_jng0p"]
+[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://fonts/GeistPixel.ttf" id="2_jng0p"]
 
 [node name="Quiz" type="Control" unique_id=942844882]
 layout_mode = 3

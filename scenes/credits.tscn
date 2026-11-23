@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://din2a3pk83ikt"]
 
-[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="1_0bpdh"]
+[ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://fonts/GeistPixel.ttf" id="1_0bpdh"]
 [ext_resource type="Script" uid="uid://c3i2ko8obfm5v" path="res://scripts/credits.gd" id="1_2ckv8"]
 [ext_resource type="Theme" uid="uid://ckm8ormicu8rl" path="res://theme.tres" id="1_2fbfq"]
 [ext_resource type="Texture2D" uid="uid://8qmswt2tg4ou" path="res://sprites/home-sceen-id-animation-sheet.png" id="2_0ctdu"]
