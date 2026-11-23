@@ -83,6 +83,9 @@ func _normalize(string: String, question: String) -> String:
 func _on_submit(text: String) -> void:
 	if not accepting:
 		return
+	if text == "" or !text_is_valid(_normalize(text, questions[current][0]), questions[current][0]):
+		feedback_label.text = "Check your answer format!"
+		return
 	
 	var correct_answer := _correct_answer()
 	if _normalize(text, questions[current][0]) == _normalize(correct_answer, questions[current][0]):

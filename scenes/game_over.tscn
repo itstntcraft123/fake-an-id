@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dchxwvjg8v2i"]
 
+[ext_resource type="Theme" uid="uid://ckm8ormicu8rl" path="res://theme.tres" id="1_racf3"]
 [ext_resource type="Script" uid="uid://cpccq23khidx5" path="res://scripts/game_over.gd" id="1_wqhvx"]
 [ext_resource type="FontFile" uid="uid://ctfx8b5m5dntu" path="res://GeistPixel.ttf" id="2_racf3"]
 [ext_resource type="Script" uid="uid://dco1cagudndq3" path="res://scripts/select_menu.gd" id="2_tbwuq"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_racf3")
 script = ExtResource("1_wqhvx")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1408444029]
@@ -72,7 +74,7 @@ theme_override_font_sizes/font_size = 96
 text = "Score: 0"
 horizontal_alignment = 1
 
-[node name="SelectMenu" type="BoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1878565193]
+[node name="SelectMenu" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=918005596]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -93,5 +95,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_racf3")
 theme_override_font_sizes/font_size = 64
 text = "Main Menu"
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/SelectMenu" unique_id=743060874]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_racf3")
+theme_override_font_sizes/font_size = 64
+text = "Credits"
 
 [node name="Timer" type="Timer" parent="MarginContainer/VBoxContainer/VBoxContainer/SelectMenu" unique_id=703976081]

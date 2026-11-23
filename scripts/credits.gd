@@ -42,4 +42,4 @@ func _input(event: InputEvent) -> void:
 func _exit() -> void:
 	if tween:
 		tween.kill()
-	Utils.change_scene_to_file(self, "res://scenes/options.tscn")
+	queue_free()

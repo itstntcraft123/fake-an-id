@@ -11,10 +11,10 @@ func _ready() -> void:
 	menu.selected.connect(_on_select_menu_selected)
 
 func _on_select_menu_selected(_index: int, item: Control) -> void:
-	print(item.name)
 	match item.name:
 		"Restart":
 			get_tree().change_scene_to_file("res://scenes/game.tscn")
 		"Menu":
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-	
+		"Credits":
+			Utils.switch_scene_as_child(self, "res://scenes/credits.tscn", $MarginContainer/VBoxContainer/VBoxContainer/SelectMenu/Credits)
