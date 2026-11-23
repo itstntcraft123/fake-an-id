@@ -30,7 +30,7 @@ const question_bank := [
 	["license_no", "What are the last 3 digits \n of your license number?", "last3"], 
 	["restrictions", "What are your restrictions?"], 
 	["endorsements", "What are your endorsements?"], 
-	["address", "What sttate do you live in? (e.g. CA)", "state"], 
+	["address", "What state do you live in? (e.g. CA)", "state"], 
 	["dd", "What are the last 4 characters of your DD?", "last4"],
 ]
 
@@ -135,7 +135,7 @@ func set_show_answers(on: bool) -> void:
 func _refresh_debug() -> void:
 	if not is_node_ready():
 		return
-	debug_label.visible = show_answers and visible and current < questions.size()
+	debug_label.visible = show_answers and OS.is_debug_build() and current < questions.size()
 	if debug_label.visible:
 		debug_label.text = "DEBUG answer: " + _correct_answer()
 
@@ -158,9 +158,7 @@ func text_is_valid(text: String, question: String) -> bool:
 		"drivers_class":
 			return len(text) == 1
 		_:
-			@warning_ignore("assert_always_true")
-			assert(true, "invalid question passed into text_is_valid")
-			return false
+			return true
 
 func _process(_delta: float) -> void:
 	if time_left_label and not answer_timer.is_stopped():

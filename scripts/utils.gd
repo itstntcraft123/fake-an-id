@@ -80,12 +80,14 @@ func get_possible_exps(dob: Dictionary, expired: bool) -> Array[int]:
 		while year < current_year:
 			result.append(year)
 			year += 5
-		return result
-	else:
-		for i in range(current_year, current_year + 6):
-			if (i - (dob["year"] + 3)) % 5 == 0 and not is_expired(dob, i):
-				return [i]
-		return [0]
+		if not result.is_empty():
+			return result
+	
+	for i in range(current_year, current_year + 6):
+		if (i - (dob["year"] + 3)) % 5 == 0 and not is_expired(dob, i):
+			return [i]
+	
+	return [current_year]
 
 # license issue date
 func random_iss(dob: Dictionary, expiry: Dictionary) -> Dictionary: # issuing date, 5 years before expiry
@@ -146,7 +148,7 @@ func random_restr(id_class: String) -> String: # restrictions
 		})
 	var rand := remove_dupes(indep_weighted_random(data))
 	rand.sort()
-	rand.slice(0, 6) # avoid overflow in license
+	rand = rand.slice(0, 6) # avoid overflow in license
 	var result := "".join(rand)
 	return result if result else "NONE"
 
